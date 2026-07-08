@@ -1,0 +1,1 @@
+sessao de comentarios? (admin pode permitir oq vai ou nao)

@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dra. Luciana | Quiropraxia & Fisioterapia Integrativa</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter (corpo) e Playfair Display (títulos premium) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome para Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        sage: {
+                            50: '#f4f7f5',
+                            100: '#e5ebe7',
+                            200: '#ccd9d1',
+                            500: '#8fa89b',
+                            600: '#738e80',
+                            800: '#46594f',
+                            900: '#2c3932',
+                        },
+                        slate: {
+                            950: '#11181c',
+                        },
+                        gold: {
+                            100: '#fcf8ee',
+                            200: '#f5e9ce',
+                            500: '#d1b07c',
+                            600: '#b89661',
+                            700: '#997948',
+                        },
+                        clinical: {
+                            dark: '#142d29', // Verde bem escuro e nobre para contraste rico
+                            light: '#FAF9F6', // Off-white suave para fundo (Alabaster)
+                        }
+                    },
+                    boxShadow: {
+                        'premium': '0 20px 40px -15px rgba(20, 45, 41, 0.05)',
+                        'floating': '0 10px 30px -10px rgba(20, 45, 41, 0.15)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Estilos adicionais para refinamento visual */
+        body {
+            background-color: #FAF9F6;
+            color: #1e293b;
+        }
+        .text-glow {
+            text-shadow: 0 0 20px rgba(143, 168, 155, 0.2);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-slate-800 selection:bg-sage-200 selection:text-sage-900 overflow-x-hidden">
+
+    <!-- BARRA DE AVISO SUPERIOR (Conversão) -->
+    <div class="bg-clinical-dark text-white text-xs py-2 px-4 text-center tracking-wide font-medium">
+        <i class="fa-regular fa-calendar-check mr-2 text-gold-500"></i> Agende sua sessão hoje e receba uma avaliação postural completa. <span class="underline text-gold-200 ml-1 cursor-pointer" onclick="scrollToElement('diagnostic-section')">Faça o teste de sintomas</span>
+    </div>
+
+    <!-- CABEÇALHO / NAVEGAÇÃO -->
+    <header class="sticky top-0 z-40 bg-clinical-light/95 backdrop-blur-md border-b border-sage-100 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Logo Tipográfico Premium -->
+            <a href="#" class="flex flex-col">
+                <span class="font-serif text-2xl font-bold tracking-tight text-clinical-dark leading-none">Dra. Luciana</span>
+                <span class="text-[10px] uppercase tracking-[0.2em] text-sage-600 font-semibold mt-1">Quiropraxia & Fisioterapia</span>
+            </a>
+
+            <!-- Navegação Desktop -->
+            <nav class="hidden md:flex items-center space-x-8 font-medium text-sm text-slate-600">
+                <a href="#sobre" class="hover:text-clinical-dark transition-colors">Sobre Mim</a>
+                <a href="#beneficios" class="hover:text-clinical-dark transition-colors">Benefícios</a>
+                <a href="#diagnostico" class="hover:text-clinical-dark transition-colors">Auto-Avaliação</a>
+                <a href="#faq" class="hover:text-clinical-dark transition-colors">Dúvidas Frequentes</a>
+                <a href="#localizacao" class="hover:text-clinical-dark transition-colors">Onde Atendo</a>
+            </nav>
+
+            <!-- CTA de Agendamento -->
+            <div class="hidden md:flex items-center space-x-4">
+                <a href="tel:+5511999999999" class="text-sm text-slate-500 hover:text-clinical-dark font-medium transition-colors">
+                    <i class="fa-solid fa-phone mr-1.5 text-sage-500"></i> Ligar
+                </a>
+                <a href="https://wa.me/5511999999999" target="_blank" class="cta-whatsapp bg-emerald-600 text-white px-5 py-2.5 rounded-full text-sm font-semibold shadow-md hover:bg-emerald-700 transition-all transform hover:-translate-y-0.5 flex items-center space-x-2">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Agendar pelo WhatsApp</span>
+                </a>
+            </div>
+
+            <!-- Botão Menu Mobile -->
+            <button onclick="toggleMobileMenu()" class="md:hidden text-clinical-dark p-2 focus:outline-none">
+                <i id="menu-icon" class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </div>
+
+        <!-- Menu Mobile Cascata -->
+        <div id="mobile-menu" class="hidden md:hidden bg-clinical-light border-b border-sage-100 px-6 py-6 space-y-4">
+            <a href="#sobre" onclick="toggleMobileMenu()" class="block font-medium text-slate-700 hover:text-clinical-dark">Sobre Mim</a>
+            <a href="#beneficios" onclick="toggleMobileMenu()" class="block font-medium text-slate-700 hover:text-clinical-dark">Benefícios</a>
+            <a href="#diagnostico" onclick="toggleMobileMenu()" class="block font-medium text-slate-700 hover:text-clinical-dark">Auto-Avaliação</a>
+            <a href="#faq" onclick="toggleMobileMenu()" class="block font-medium text-slate-700 hover:text-clinical-dark">Dúvidas Frequentes</a>
+            <a href="#localizacao" onclick="toggleMobileMenu()" class="block font-medium text-slate-700 hover:text-clinical-dark">Onde Atendo</a>
+            <hr class="border-sage-100 my-4">
+            <a href="https://wa.me/5511999999999" target="_blank" class="cta-whatsapp bg-emerald-600 text-white w-full py-3 rounded-full font-semibold shadow-md hover:bg-emerald-700 transition-all flex items-center justify-center space-x-2">
+                <i class="fa-brands fa-whatsapp text-lg"></i>
+                <span>Agendar Consulta</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION (Apresentação Nobre e Direta) -->
+    <section class="relative min-h-[85vh] flex items-center py-16 lg:py-24 overflow-hidden bg-gradient-to-b from-sage-50 to-clinical-light">
+        <!-- Detalhes de Background Orgânicos -->
+        <div class="absolute top-1/4 right-0 w-96 h-96 bg-sage-200/30 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-10 left-10 w-72 h-72 bg-gold-200/20 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <!-- Conteúdo Textual (6 Colunas) -->
+            <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
+                <!-- Tag de Destaque -->
+                <div class="inline-flex items-center space-x-2 bg-sage-100 text-sage-900 px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider">
+                    <span class="w-1.5 h-1.5 bg-sage-500 rounded-full animate-ping"></span>
+                    <span>Atendimento Particular & Personalizado</span>
+                </div>
+
+                <!-- Título Nobre de Altíssimo Impacto -->
+                <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl text-clinical-dark font-bold leading-[1.1] tracking-tight">
+                    Recupere o <span class="text-sage-600 italic font-medium">equilíbrio</span> natural do seu corpo e viva sem dor.
+                </h1>
+
+                <!-- Subtítulo Altamente Descritivo -->
+                <p class="text-base sm:text-lg text-slate-600 font-light leading-relaxed max-w-xl mx-auto lg:mx-0">
+                    Através de ajustes articulares precisos e fisioterapia especializada, a Dra. Luciana foca na raiz do seu problema físico, libertando você das dores crônicas para restaurar sua mobilidade.
+                </p>
+
+                <!-- CTAs de Ação Rápida baseados no Refactoring UI (Hierarquia Visual Clara) -->
+                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                    <a href="https://wa.me/5511999999999" target="_blank" class="cta-whatsapp w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 flex items-center justify-center space-x-3 text-base">
+                        <i class="fa-brands fa-whatsapp text-xl"></i>
+                        <span>Reservar Minha Avaliação</span>
+                    </a>
+                    <a href="#diagnostico" class="w-full sm:w-auto bg-white border border-sage-200 hover:border-sage-500 text-slate-700 font-semibold px-8 py-4 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 flex items-center justify-center space-x-2 text-base">
+                        <span>Fazer Diagnóstico de Sintomas</span>
+                        <i class="fa-solid fa-arrow-down text-xs text-sage-500"></i>
+                    </a>
+                </div>
+
+                <!-- Selos de Credibilidade Social Rápida -->
+                <div class="pt-6 border-t border-sage-100 grid grid-cols-3 gap-4 max-w-lg mx-auto lg:mx-0">
+                    <div class="text-center lg:text-left">
+                        <div class="font-serif text-2xl font-bold text-clinical-dark">+1.500</div>
+                        <div class="text-[11px] text-slate-500 uppercase tracking-wider">Vidas Sem Dor</div>
+                    </div>
+                    <div class="text-center lg:text-left border-x border-slate-200/60 px-4">
+                        <div class="font-serif text-2xl font-bold text-clinical-dark">CREFITO</div>
+                        <div class="text-[11px] text-slate-500 uppercase tracking-wider">Profissional Registrada</div>
+                    </div>
+                    <div class="text-center lg:text-left">
+                        <div class="font-serif text-2xl font-bold text-clinical-dark">100%</div>
+                        <div class="text-[11px] text-slate-500 uppercase tracking-wider">Foco na Causa Real</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Imagem e Caixa de Conversão (5 Colunas) -->
+            <div class="lg:col-span-5 relative mt-8 lg:mt-0">
+                <!-- Moldura Estilo Editorial com Imagem Clinica Genérica Premium -->
+                <div class="relative mx-auto max-w-[360px] lg:max-w-none">
+                    <!-- Detalhe decorativo atrás da imagem -->
+                    <div class="absolute -top-4 -left-4 w-full h-full border border-gold-500/40 rounded-3xl -z-10 transform -translate-x-2 translate-y-2"></div>
+                    
+                    <div class="bg-white p-3 rounded-3xl shadow-premium overflow-hidden">
+                        <!-- Imagem Genérica Profissional (Placeholder de Alta Resolução via Unsplash) -->
+                        <div class="aspect-[3/4] rounded-2xl overflow-hidden bg-sage-100 relative group">
+                            <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=600" 
+                                 alt="Dra. Luciana em seu consultório" 
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                 onerror="this.src='https://via.placeholder.com/450x600/e5ebe7/46594f?text=Dra.+Luciana+Fisioterapia+Quiropraxista'">
+                            <div class="absolute inset-0 bg-gradient-to-t from-clinical-dark/80 via-transparent to-transparent flex items-end p-6">
+                                <div class="text-white">
+                                    <div class="font-serif text-lg font-bold">Dra. Luciana</div>
+                                    <div class="text-xs text-sage-200">Quiropraxista & Fisioterapeuta Integrativa</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card Flutuante de Endosso Rápido -->
+                    <div class="absolute -bottom-6 -right-6 md:right-4 bg-white p-4 rounded-2xl shadow-floating max-w-[200px] border border-sage-100/50 animate-bounce-slow">
+                        <div class="flex items-center space-x-1 text-amber-500 mb-1">
+                            <i class="fa-solid fa-star text-xs"></i>
+                            <i class="fa-solid fa-star text-xs"></i>
+                            <i class="fa-solid fa-star text-xs"></i>
+                            <i class="fa-solid fa-star text-xs"></i>
+                            <i class="fa-solid fa-star text-xs"></i>
+                        </div>
+                        <p class="text-xs text-slate-600 font-medium leading-snug">"O melhor investimento que fiz na minha saúde de coluna."</p>
+                        <span class="text-[10px] text-slate-400 block mt-1">— Ricardo S., Paciente</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- O QUE VOCÊ SENTE? (Seção de Diagnóstico Rápido de Sintomas) -->
+    <section class="py-20 lg:py-28 bg-white" id="beneficios">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto space-y-4 mb-16">
+                <span class="text-xs font-semibold text-sage-600 uppercase tracking-[0.2em]">O que está roubando sua paz?</span>
+                <h2 class="font-serif text-3xl sm:text-4xl text-clinical-dark font-bold tracking-tight">Sintomas comuns que tratamos na clínica</h2>
+                <p class="text-slate-500 text-sm sm:text-base font-light">Se você convive diariamente com algum desses desconfortos, saiba que seu corpo está emitindo um sinal de alerta de desalinhamento articular ou tensão severa.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Sintoma 1 -->
+                <div class="bg-clinical-light p-8 rounded-2xl border border-sage-100/50 shadow-sm hover:shadow-premium transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="w-12 h-12 bg-sage-100 rounded-xl flex items-center justify-center text-clinical-dark mb-6 text-xl">
+                        <i class="fa-solid fa-person-falling-burst"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-clinical-dark mb-3">Lombalgia / Dor nas Costas</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">A dor lombar crônica geralmente é causada pelo desalinhamento das vértebras inferiores, comprimindo nervos e sobrecarregando a musculatura.</p>
+                    <span class="text-xs font-semibold text-sage-600 flex items-center space-x-1 cursor-pointer" onclick="scrollToElement('diagnostic-section')">
+                        <span>Ver diagnóstico</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    </span>
+                </div>
+
+                <!-- Sintoma 2 -->
+                <div class="bg-clinical-light p-8 rounded-2xl border border-sage-100/50 shadow-sm hover:shadow-premium transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="w-12 h-12 bg-sage-100 rounded-xl flex items-center justify-center text-clinical-dark mb-6 text-xl">
+                        <i class="fa-solid fa-head-side-virus"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-clinical-dark mb-3">Enxaquecas e Dores de Cabeça</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">Dores que começam no pescoço e irradiam para a cabeça frequentemente têm origem tensional na região cervical superior e suboccipital.</p>
+                    <span class="text-xs font-semibold text-sage-600 flex items-center space-x-1 cursor-pointer" onclick="scrollToElement('diagnostic-section')">
+                        <span>Ver diagnóstico</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    </span>
+                </div>
+
+                <!-- Sintoma 3 -->
+                <div class="bg-clinical-light p-8 rounded-2xl border border-sage-100/50 shadow-sm hover:shadow-premium transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="w-12 h-12 bg-sage-100 rounded-xl flex items-center justify-center text-clinical-dark mb-6 text-xl">
+                        <i class="fa-solid fa-person-running"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-clinical-dark mb-3">Hérnia de Disco e Ciatalgia</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">Dor intensa que irradia para as pernas ou glúteos devido à compressão do nervo ciático. O ajuste diminui a pressão sobre o disco afetado.</p>
+                    <span class="text-xs font-semibold text-sage-600 flex items-center space-x-1 cursor-pointer" onclick="scrollToElement('diagnostic-section')">
+                        <span>Ver diagnóstico</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    </span>
+                </div>
+
+                <!-- Sintoma 4 -->
+                <div class="bg-clinical-light p-8 rounded-2xl border border-sage-100/50 shadow-sm hover:shadow-premium transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="w-12 h-12 bg-sage-100 rounded-xl flex items-center justify-center text-clinical-dark mb-6 text-xl">
+                        <i class="fa-solid fa-child"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-clinical-dark mb-3">Desvios de Postura (Hiperlordose/Escoliose)</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">A má postura repetitiva sobrecarrega articulações e desgasta precocemente a coluna. O alinhamento devolve o centro de gravidade do corpo.</p>
+                    <span class="text-xs font-semibold text-sage-600 flex items-center space-x-1 cursor-pointer" onclick="scrollToElement('diagnostic-section')">
+                        <span>Ver diagnóstico</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    </span>
+                </div>
+
+                <!-- Sintoma 5 -->
+                <div class="bg-clinical-light p-8 rounded-2xl border border-sage-100/50 shadow-sm hover:shadow-premium transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="w-12 h-12 bg-sage-100 rounded-xl flex items-center justify-center text-clinical-dark mb-6 text-xl">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-clinical-dark mb-3">Tensão Muscular no Pescoço e Ombros</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">O estresse físico e mental acumula rigidez nos trapézios. A quiropraxia libera o fluxo nervoso e promove o relaxamento muscular profundo.</p>
+                    <span class="text-xs font-semibold text-sage-600 flex items-center space-x-1 cursor-pointer" onclick="scrollToElement('diagnostic-section')">
+                        <span>Ver diagnóstico</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    </span>
+                </div>
+
+                <!-- Sintoma 6 -->
+                <div class="bg-clinical-light p-8 rounded-2xl border border-sage-100/50 shadow-sm hover:shadow-premium transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="w-12 h-12 bg-sage-100 rounded-xl flex items-center justify-center text-clinical-dark mb-6 text-xl">
+                        <i class="fa-solid fa-hand-holding-medical"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-clinical-dark mb-3">Formigamento e Dormência de Membros</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">A dormência nos braços, mãos ou dedos costuma ser sinal de estenose cervical ou pinçamento de canais nervosos na coluna vertebral.</p>
+                    <span class="text-xs font-semibold text-sage-600 flex items-center space-x-1 cursor-pointer" onclick="scrollToElement('diagnostic-section')">
+                        <span>Ver diagnóstico</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOBRE A DRA. LUCIANA (Apresentação Pessoal e Humanizada) -->
+    <section class="py-20 lg:py-28 bg-sage-50 border-y border-sage-100 relative" id="sobre">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+            
+            <!-- Foto em Destaque com Design Editorial -->
+            <div class="lg:col-span-5 relative">
+                <div class="relative max-w-md mx-auto">
+                    <!-- Detalhe decorativo circular de fundo -->
+                    <div class="absolute -bottom-10 -left-10 w-44 h-44 bg-gold-200/40 rounded-full blur-2xl -z-10"></div>
+                    <div class="bg-white p-4 rounded-[2rem] shadow-premium">
+                        <!-- Imagem Genérica de Profissional de Saúde Tratando Paciente -->
+                        <div class="aspect-square rounded-2xl overflow-hidden bg-sage-100">
+                            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=600" 
+                                 alt="Dra. Luciana em atendimento humanizado" 
+                                 class="w-full h-full object-cover"
+                                 onerror="this.src='https://via.placeholder.com/600/e5ebe7/46594f?text=Dra.+Luciana+Em+Foco'">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Narrativa da Dra. Luciana (6 Colunas) -->
+            <div class="lg:col-span-7 space-y-6">
+                <span class="text-xs font-semibold text-sage-600 uppercase tracking-[0.2em]">Quem Cuida de Você</span>
+                <h2 class="font-serif text-3xl sm:text-4xl text-clinical-dark font-bold leading-tight tracking-tight">Dra. Luciana [Sobrenome]</h2>
+                <h3 class="text-gold-700 font-medium text-sm sm:text-base tracking-wide uppercase">Fisioterapeuta (CREFITO X/XXXX) & Quiropraxista Integrativa</h3>
+                
+                <div class="space-y-4 text-slate-600 font-light text-sm sm:text-base leading-relaxed">
+                    <p>
+                        Acredito que a saúde integral começa na livre circulação da energia nervosa pela coluna. Minha missão vai além de estalar articulações; busco entender sua rotina, suas dores emocionais somatizadas e sua postura para criar um ecossistema clínico de cura real.
+                    </p>
+                    <p>
+                        Com anos de especialização acadêmica e prática clínica diária, integro a suavidade e técnicas corretivas da <strong>Fisioterapia Ortopédica</strong> com a precisão restauradora e imediata da <strong>Quiropraxia Clínica</strong>. 
+                    </p>
+                </div>
+
+                <!-- Lista de Especialidades de Alto Nível -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-4">
+                    <div class="flex items-center space-x-3 text-slate-700 text-sm">
+                        <span class="flex-shrink-0 w-6 h-6 bg-sage-100 text-sage-800 rounded-full flex items-center justify-center text-xs">✓</span>
+                        <span>Quiropraxia Instrumental e Manual</span>
+                    </div>
+                    <div class="flex items-center space-x-3 text-slate-700 text-sm">
+                        <span class="flex-shrink-0 w-6 h-6 bg-sage-100 text-sage-800 rounded-full flex items-center justify-center text-xs">✓</span>
+                        <span>Fisioterapia Miofascial e Traumato</span>
+                    </div>
+                    <div class="flex items-center space-x-3 text-slate-700 text-sm">
+                        <span class="flex-shrink-0 w-6 h-6 bg-sage-100 text-sage-800 rounded-full flex items-center justify-center text-xs">✓</span>
+                        <span>Análise Postural Computadorizada</span>
+                    </div>
+                    <div class="flex items-center space-x-3 text-slate-700 text-sm">
+                        <span class="flex-shrink-0 w-6 h-6 bg-sage-100 text-sage-800 rounded-full flex items-center justify-center text-xs">✓</span>
+                        <span>Tratamento da Dor Crônica</span>
+                    </div>
+                </div>
+
+                <!-- Botão de Agendamento Secundário -->
+                <div class="pt-6">
+                    <a href="https://wa.me/5511999999999" target="_blank" class="cta-whatsapp inline-flex items-center space-x-3 bg-clinical-dark hover:bg-sage-900 text-white font-semibold px-8 py-4 rounded-xl transition-all shadow-md">
+                        <i class="fa-brands fa-whatsapp text-lg text-emerald-400"></i>
+                        <span>Falar Diretamente com a Dra. Luciana</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- METODOLOGIA DE ATENDIMENTO (3 Passos) -->
+    <section class="py-20 lg:py-28 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto space-y-4 mb-16">
+                <span class="text-xs font-semibold text-sage-600 uppercase tracking-[0.2em]">Sua Jornada de Alívio</span>
+                <h2 class="font-serif text-3xl sm:text-4xl text-clinical-dark font-bold tracking-tight">Como funciona sua consulta?</h2>
+                <p class="text-slate-500 text-sm sm:text-base font-light">Seu atendimento é individual, humanizado e extremamente detalhado. Sem pressa, com foco na sua história clínica.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
+                <!-- Conector Visual Linha Horizontal para Desktop -->
+                <div class="hidden md:block absolute top-[4.5rem] left-[15%] right-[15%] h-[2px] bg-sage-100 -z-10"></div>
+
+                <!-- Passo 1 -->
+                <div class="text-center space-y-4">
+                    <div class="w-20 h-20 bg-sage-50 border border-sage-100 rounded-3xl flex items-center justify-center font-serif text-2xl font-bold text-clinical-dark mx-auto shadow-sm relative">
+                        01
+                        <span class="absolute -bottom-1 right-1 w-6 h-6 bg-gold-500 text-white rounded-full flex items-center justify-center text-[10px]"><i class="fa-solid fa-stethoscope"></i></span>
+                    </div>
+                    <h3 class="font-serif text-lg font-bold text-clinical-dark">Avaliação Detalhada</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed font-light max-w-xs mx-auto">
+                        Análise postural rigorosa, testes ortopédicos específicos e leitura de exames de imagem para mapear desalinhamentos.
+                    </p>
+                </div>
+
+                <!-- Passo 2 -->
+                <div class="text-center space-y-4">
+                    <div class="w-20 h-20 bg-sage-50 border border-sage-100 rounded-3xl flex items-center justify-center font-serif text-2xl font-bold text-clinical-dark mx-auto shadow-sm relative">
+                        02
+                        <span class="absolute -bottom-1 right-1 w-6 h-6 bg-gold-500 text-white rounded-full flex items-center justify-center text-[10px]"><i class="fa-solid fa-hands"></i></span>
+                    </div>
+                    <h3 class="font-serif text-lg font-bold text-clinical-dark">Ajustes & Fisioterapia</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed font-light max-w-xs mx-auto">
+                        Aplicação de manobras de quiropraxia seguras e indolores para restabelecer a mobilidade articular, somado a liberação miofascial.
+                    </p>
+                </div>
+
+                <!-- Passo 3 -->
+                <div class="text-center space-y-4">
+                    <div class="w-20 h-20 bg-sage-50 border border-sage-100 rounded-3xl flex items-center justify-center font-serif text-2xl font-bold text-clinical-dark mx-auto shadow-sm relative">
+                        03
+                        <span class="absolute -bottom-1 right-1 w-6 h-6 bg-gold-500 text-white rounded-full flex items-center justify-center text-[10px]"><i class="fa-solid fa-dumbbell"></i></span>
+                    </div>
+                    <h3 class="font-serif text-lg font-bold text-clinical-dark">Fortalecimento & Hábitos</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed font-light max-w-xs mx-auto">
+                        Direcionamento de exercícios terapêuticos específicos para manter o alinhamento corporal e evitar que as dores retornem.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO DIAGNÓSTICO INTERATIVO DE SINTOMAS (ALTA CONVERSÃO) -->
+    <section class="py-20 lg:py-28 bg-gradient-to-tr from-clinical-dark via-sage-900 to-clinical-dark text-white relative overflow-hidden" id="diagnostico">
+        <!-- Elemento Decorativo para estética clean -->
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(143,168,155,0.15),transparent)] pointer-events-none"></div>
+
+        <div class="max-w-4xl mx-auto px-6 relative z-10" id="diagnostic-section">
+            <div class="text-center space-y-4 mb-12">
+                <span class="text-xs font-semibold text-gold-500 uppercase tracking-[0.2em]">Auto-Avaliação em 1 Minuto</span>
+                <h2 class="font-serif text-3xl sm:text-4xl text-white font-bold tracking-tight">O que você está sentindo?</h2>
+                <p class="text-sage-100 text-sm sm:text-base font-light max-w-xl mx-auto">Responda ao questionário rápido abaixo para entender a raiz provável da sua queixa postural e receber um diagnóstico inicial.</p>
+            </div>
+
+            <!-- Quiz Interativo em JavaScript -->
+            <div class="bg-white/10 backdrop-blur-md p-8 rounded-3xl border border-white/10 shadow-premium" id="quiz-container">
+                <!-- PASSO 1: Onde dói -->
+                <div id="step-1" class="space-y-6">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-xs font-medium text-sage-200">Passo 1 de 3</span>
+                        <div class="w-24 bg-white/20 h-1.5 rounded-full overflow-hidden">
+                            <div class="bg-gold-500 h-full w-[33%] rounded-full"></div>
+                        </div>
+                    </div>
+                    <h3 class="font-serif text-xl font-semibold">Qual a principal área de dor ou desconforto?</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <button onclick="nextQuizStep(2, 'lombar')" class="quiz-btn text-left p-4 rounded-xl border border-white/10 hover:border-gold-500 hover:bg-white/5 transition-all flex items-center space-x-3">
+                            <span class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-sm">A</span>
+                            <span>Região Lombar / Quadril / Glúteo</span>
+                        </button>
+                        <button onclick="nextQuizStep(2, 'cervical')" class="quiz-btn text-left p-4 rounded-xl border border-white/10 hover:border-gold-500 hover:bg-white/5 transition-all flex items-center space-x-3">
+                            <span class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-sm">B</span>
+                            <span>Pescoço / Cervical / Ombros</span>
+                        </button>
+                        <button onclick="nextQuizStep(2, 'cabeca')" class="quiz-btn text-left p-4 rounded-xl border border-white/10 hover:border-gold-500 hover:bg-white/5 transition-all flex items-center space-x-3">
+                            <span class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-sm">C</span>
+                            <span>Dores de Cabeça / Tensão Mandibular</span>
+                        </button>
+                        <button onclick="nextQuizStep(2, 'geral')" class="quiz-btn text-left p-4 rounded-xl border border-white/10 hover:border-gold-500 hover:bg-white/5 transition-all flex items-center space-x-3">
+                            <span class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-sm">D</span>
+                            <span>Falta de flexibilidade / Má postura geral</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- PASSO 2: Há quanto tempo dói -->
+                <div id="step-2" class="hidden space-y-6">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-xs font-medium text-sage-200">Passo 2 de 3</span>
+                        <div class="w-24 bg-white/20 h-1.5 rounded-full overflow-hidden">
+                            <div class="bg-gold-500 h-full w-[66%] rounded-full"></div>
+                        </div>
+                    </div>
+                    <h3 class="font-serif text-xl font-semibold">Há quanto tempo você convive com esse desconforto?</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <button onclick="nextQuizStep(3, 'agudo')" class="quiz-btn text-left p-4 rounded-xl border border-white/10 hover:border-gold-500 hover:bg-white/5 transition-all flex items-center space-x-3">
+                            <span class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-sm">A</span>
+                            <span>Menos de 2 semanas (Dor recente/aguda)</span>
+                        </button>
+                        <button onclick="nextQuizStep(3, 'subagudo')" class="quiz-btn text-left p-4 rounded-xl border border-white/10 hover:border-gold-500 hover:bg-white/5 transition-all flex items-center space-x-3">
+                            <span class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-sm">B</span>
+                            <span>De 2 semanas a 3 meses (Vem e vai)</span>
+                        </button>
+                        <button onclick="nextQuizStep(3, 'cronico')" class="quiz-btn text-left p-4 rounded-xl border border-white/10 hover:border-gold-500 hover:bg-white/5 transition-all flex items-center space-x-3">
+                            <span class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-sm">C</span>
+                            <span>Há mais de 3 meses (Dor diária/constante)</span>
+                        </button>
+                        <button onclick="nextQuizStep(3, 'preventivo')" class="quiz-btn text-left p-4 rounded-xl border border-white/10 hover:border-gold-500 hover:bg-white/5 transition-all flex items-center space-x-3">
+                            <span class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-sm">D</span>
+                            <span>Não tenho dores constantes, foco em prevenção</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- PASSO 3: Intensidade e Diagnóstico final -->
+                <div id="step-3" class="hidden space-y-6">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-xs font-medium text-sage-200">Passo 3 de 3</span>
+                        <div class="w-24 bg-white/20 h-1.5 rounded-full overflow-hidden">
+                            <div class="bg-gold-500 h-full w-[100%] rounded-full"></div>
+                        </div>
+                    </div>
+                    <h3 class="font-serif text-xl font-semibold">Como essa dor afeta a sua rotina diária?</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <button onclick="showQuizResult('leve')" class="quiz-btn text-left p-4 rounded-xl border border-white/10 hover:border-gold-500 hover:bg-white/5 transition-all flex items-center space-x-3">
+                            <span class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-sm">A</span>
+                            <span>Apenas incomoda ao fazer alguns movimentos</span>
+                        </button>
+                        <button onclick="showQuizResult('moderada')" class="quiz-btn text-left p-4 rounded-xl border border-white/10 hover:border-gold-500 hover:bg-white/5 transition-all flex items-center space-x-3">
+                            <span class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-sm">B</span>
+                            <span>Prejudica meu rendimento no trabalho/estudos</span>
+                        </button>
+                        <button onclick="showQuizResult('grave')" class="quiz-btn text-left p-4 rounded-xl border border-white/10 hover:border-gold-500 hover:bg-white/5 transition-all flex items-center space-x-3">
+                            <span class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-sm">C</span>
+                            <span>Dificulta tarefas simples como dormir ou levantar</span>
+                        </button>
+                        <button onclick="showQuizResult('estetica')" class="quiz-btn text-left p-4 rounded-xl border border-white/10 hover:border-gold-500 hover:bg-white/5 transition-all flex items-center space-x-3">
+                            <span class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-sm">D</span>
+                            <span>Impacta na minha estética postural e alongamento</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- RESULTADO DIAGNÓSTICO -->
+                <div id="quiz-result" class="hidden text-center space-y-6">
+                    <div class="w-16 h-16 bg-gold-500/20 text-gold-500 rounded-full flex items-center justify-center text-2xl mx-auto">
+                        <i class="fa-solid fa-circle-info"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold">Diagnóstico Estimado</h3>
+                    
+                    <div class="bg-white/5 p-6 rounded-2xl max-w-lg mx-auto text-left border border-white/10 space-y-4 text-sm sm:text-base">
+                        <p class="font-medium text-gold-500" id="result-headline">Alerta de Compensação Postural Detectado</p>
+                        <p class="text-sage-100 font-light" id="result-description">
+                            Os seus sintomas indicam uma provável sobrecarga articular com encurtamento compensatório na musculatura adjacente. Isso pode gerar compressões nervosas caso não seja tratado.
+                        </p>
+                        <div class="p-3 bg-white/5 rounded-xl border border-white/10 text-xs text-sage-200">
+                            <strong>Recomendação:</strong> Um exame de toque clínico com ajuste articular inicial para aliviar as pressões é altamente aconselhado para o seu caso.
+                        </div>
+                    </div>
+
+                    <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+                        <button onclick="restartQuiz()" class="text-xs text-sage-300 hover:text-white underline">
+                            Refazer teste
+                        </button>
+                        <a id="btn-quiz-cta" href="https://wa.me/5511999999999?text=Olá+Dra+Luciana!+Fiz+o+teste+de+auto-avaliação+no+seu+site+e+gostaria+de+marcar+minha+sessão+com+base+no+resultado." target="_blank" class="cta-whatsapp bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-8 py-4 rounded-xl shadow-lg transition-all flex items-center space-x-2">
+                            <i class="fa-brands fa-whatsapp text-lg"></i>
+                            <span>Enviar Diagnóstico para a Dra. Luciana</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROVAS SOCIAIS (Avaliações do Google Reviews) -->
+    <section class="py-20 lg:py-28 bg-clinical-light overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
+                <div class="space-y-4">
+                    <span class="text-xs font-semibold text-sage-600 uppercase tracking-[0.2em]">O que dizem os Pacientes</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl text-clinical-dark font-bold tracking-tight">Depoimentos de quem transformou a saúde da coluna</h2>
+                </div>
+                <div class="flex items-center space-x-2 bg-white px-4 py-2 rounded-xl shadow-sm border border-sage-100">
+                    <span class="text-emerald-600 font-bold">★ 4.9/5.0</span>
+                    <span class="text-xs text-slate-500">Média de 120+ avaliações no Google</span>
+                </div>
+            </div>
+
+            <!-- Grid de Depoimentos Reais Adaptado (Clean & Elegante) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Depoimento 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-premium border border-sage-100 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-1 text-amber-400">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-600 text-sm leading-relaxed font-light">
+                            "Eu tinha crises fortíssimas de dor lombar que me impediam de trabalhar sentado por mais de 1 hora. Logo na primeira sessão com a Dra. Luciana senti um alívio absurdo de pressão. Hoje faço manutenção mensal e minha postura melhorou 100%!"
+                        </p>
+                    </div>
+                    <div class="flex items-center space-x-3 pt-6 border-t border-slate-100 mt-6">
+                        <div class="w-10 h-10 rounded-full bg-sage-200 text-sage-800 flex items-center justify-center font-bold text-xs">MA</div>
+                        <div>
+                            <div class="text-sm font-semibold text-clinical-dark">Marcos André</div>
+                            <div class="text-[10px] text-slate-400">Desenvolvedor de Software</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Depoimento 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-premium border border-sage-100 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-1 text-amber-400">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-600 text-sm leading-relaxed font-light">
+                            "A enxaqueca era minha companheira diária de escritório. Fiquei surpresa ao saber que vinha da minha cervical tensionada. Os ajustes delicados da Dra. Luciana resolveram em semanas o que remédios não curavam."
+                        </p>
+                    </div>
+                    <div class="flex items-center space-x-3 pt-6 border-t border-slate-100 mt-6">
+                        <div class="w-10 h-10 rounded-full bg-sage-200 text-sage-800 flex items-center justify-center font-bold text-xs">FC</div>
+                        <div>
+                            <div class="text-sm font-semibold text-clinical-dark">Fernanda Costa</div>
+                            <div class="text-[10px] text-slate-400">Arquiteta</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Depoimento 3 -->
+                <div class="bg-white p-8 rounded-2xl shadow-premium border border-sage-100 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-1 text-amber-400">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-600 text-sm leading-relaxed font-light">
+                            "Como atleta de crossfit, a dor no ombro e no ciático viviam me limitando. A Luciana entende muito da biomecânica do movimento. Além do ajuste, ela me ensinou alongamentos específicos. Recomendo de olhos fechados."
+                        </p>
+                    </div>
+                    <div class="flex items-center space-x-3 pt-6 border-t border-slate-100 mt-6">
+                        <div class="w-10 h-10 rounded-full bg-sage-200 text-sage-800 flex items-center justify-center font-bold text-xs">GS</div>
+                        <div>
+                            <div class="text-sm font-semibold text-clinical-dark">Gabriel Souza</div>
+                            <div class="text-[10px] text-slate-400">Atleta & Empresário</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO INSTAGRAM FEED (INTEGRAÇÃO MOCKUP DE ENGAJAMENTO) -->
+    <section class="py-20 lg:py-28 bg-white" id="instagram-section">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto space-y-4 mb-16">
+                <span class="text-xs font-semibold text-sage-600 uppercase tracking-[0.2em]">Conteúdo & Conhecimento</span>
+                <h2 class="font-serif text-3xl sm:text-4xl text-clinical-dark font-bold tracking-tight">Siga a Dra. Luciana no Instagram</h2>
+                <p class="text-slate-500 text-sm sm:text-base font-light">Dicas diárias sobre postura correta, alongamento dinâmico e bastidores da clínica de quiropraxia.</p>
+                <a href="https://instagram.com" target="_blank" class="inline-flex items-center space-x-2 text-gold-700 hover:text-gold-800 font-semibold text-sm transition-colors pt-2">
+                    <i class="fa-brands fa-instagram text-lg"></i>
+                    <span>@dra.luciana.quiro</span>
+                </a>
+            </div>
+
+            <!-- Feed Grid Interativo -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <!-- Post 1 -->
+                <div class="relative group aspect-square rounded-2xl overflow-hidden bg-slate-100 cursor-pointer shadow-sm hover:shadow-premium transition-all" onclick="openInstagramLightbox('post-1')">
+                    <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=400" alt="Post de Saúde Postural" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-clinical-dark/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center text-white space-x-6 text-sm">
+                        <span><i class="fa-solid fa-heart mr-1.5"></i> 245</span>
+                        <span><i class="fa-solid fa-comment mr-1.5"></i> 18</span>
+                    </div>
+                </div>
+
+                <!-- Post 2 -->
+                <div class="relative group aspect-square rounded-2xl overflow-hidden bg-slate-100 cursor-pointer shadow-sm hover:shadow-premium transition-all" onclick="openInstagramLightbox('post-2')">
+                    <img src="https://images.unsplash.com/photo-1599447421416-3414500d18a5?auto=format&fit=crop&q=80&w=400" alt="Post de Quiropraxia Clínica" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-clinical-dark/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center text-white space-x-6 text-sm">
+                        <span><i class="fa-solid fa-heart mr-1.5"></i> 412</span>
+                        <span><i class="fa-solid fa-comment mr-1.5"></i> 32</span>
+                    </div>
+                </div>
+
+                <!-- Post 3 -->
+                <div class="relative group aspect-square rounded-2xl overflow-hidden bg-slate-100 cursor-pointer shadow-sm hover:shadow-premium transition-all" onclick="openInstagramLightbox('post-3')">
+                    <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&q=80&w=400" alt="Post de Alongamento" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-clinical-dark/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center text-white space-x-6 text-sm">
+                        <span><i class="fa-solid fa-heart mr-1.5"></i> 189</span>
+                        <span><i class="fa-solid fa-comment mr-1.5"></i> 9</span>
+                    </div>
+                </div>
+
+                <!-- Post 4 -->
+                <div class="relative group aspect-square rounded-2xl overflow-hidden bg-slate-100 cursor-pointer shadow-sm hover:shadow-premium transition-all" onclick="openInstagramLightbox('post-4')">
+                    <img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&q=80&w=400" alt="Post de Dicas de Ergonomia" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-clinical-dark/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center text-white space-x-6 text-sm">
+                        <span><i class="fa-solid fa-heart mr-1.5"></i> 350</span>
+                        <span><i class="fa-solid fa-comment mr-1.5"></i> 27</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LIGHTBOX PARA POST DO INSTAGRAM (INTERATIVIDADE) -->
+    <div id="instagram-lightbox" class="fixed inset-0 bg-clinical-dark/90 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4" onclick="closeInstagramLightbox()">
+        <div class="bg-white rounded-3xl max-w-3xl w-full overflow-hidden shadow-premium grid grid-cols-1 md:grid-cols-2" onclick="event.stopPropagation()">
+            <!-- Lado Esquerdo: Imagem -->
+            <div class="aspect-square bg-slate-100">
+                <img id="lightbox-img" src="" alt="Dica Instagram" class="w-full h-full object-cover">
+            </div>
+            <!-- Lado Direito: Conteúdo de Engajamento -->
+            <div class="p-8 flex flex-col justify-between h-full min-h-[350px]">
+                <div>
+                    <!-- Perfil Header -->
+                    <div class="flex items-center justify-between pb-4 border-b border-slate-100 mb-6">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-9 h-9 rounded-full bg-sage-200 flex items-center justify-center font-bold text-clinical-dark text-xs">DL</div>
+                            <div>
+                                <h4 class="font-bold text-sm text-clinical-dark">dra.luciana.quiro</h4>
+                                <p class="text-[10px] text-slate-400">Clínica de Quiropraxia</p>
+                            </div>
+                        </div>
+                        <button onclick="closeInstagramLightbox()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-lg"></i></button>
+                    </div>
+                    <!-- Legenda -->
+                    <p id="lightbox-caption" class="text-sm text-slate-600 font-light leading-relaxed mb-4">
+                        Carregando legenda...
+                    </p>
+                </div>
+
+                <!-- Ações e Comentário -->
+                <div class="space-y-4 pt-4 border-t border-slate-100">
+                    <div class="flex justify-between items-center text-slate-700">
+                        <div class="flex space-x-4">
+                            <button class="hover:text-red-500 transition-colors"><i class="fa-regular fa-heart text-xl"></i></button>
+                            <button class="hover:text-emerald-600 transition-colors"><i class="fa-regular fa-comment text-xl"></i></button>
+                        </div>
+                        <span class="text-xs text-slate-400">Publicado há 2 dias</span>
+                    </div>
+                    <a href="https://wa.me/5511999999999" class="cta-whatsapp bg-emerald-600 text-white w-full py-2.5 rounded-xl font-semibold text-center text-sm block hover:bg-emerald-700 transition-colors">
+                        Agendar sessão pelo perfil
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PERGUNTAS FREQUENTES (FAQ) -->
+    <section class="py-20 lg:py-28 bg-clinical-light border-t border-sage-100" id="faq">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto space-y-4 mb-16">
+                <span class="text-xs font-semibold text-sage-600 uppercase tracking-[0.2em]">Esclareça Suas Dúvidas</span>
+                <h2 class="font-serif text-3xl sm:text-4xl text-clinical-dark font-bold tracking-tight">Perguntas Frequentes</h2>
+                <p class="text-slate-500 text-sm sm:text-base font-light">Queremos que você se sinta totalmente confiante e seguro para sua primeira sessão. Confira as respostas das principais dúvidas dos nossos pacientes.</p>
+            </div>
+
+            <!-- Acordeões Dinâmicos -->
+            <div class="space-y-4" id="faq-section">
+                <!-- FAQ Item 1 -->
+                <div class="bg-white rounded-2xl shadow-sm border border-sage-100 overflow-hidden">
+                    <button onclick="toggleFAQ(1)" class="w-full text-left p-6 flex justify-between items-center hover:bg-sage-50/50 transition-colors focus:outline-none">
+                        <span class="font-serif font-bold text-slate-800 text-base sm:text-lg">O ajuste de quiropraxia dói?</span>
+                        <span id="faq-icon-1" class="w-6 h-6 rounded-full bg-sage-100 text-sage-800 flex items-center justify-center text-xs transform transition-transform duration-300"><i class="fa-solid fa-plus"></i></span>
+                    </button>
+                    <div id="faq-answer-1" class="hidden px-6 pb-6 text-sm sm:text-base text-slate-600 font-light leading-relaxed border-t border-slate-50 pt-4">
+                        Absolutamente não. Os ajustes são manobras rápidas, extremamente precisas e indolores. É normal sentir um alívio de pressão imediato e, às vezes, ouvir um estalo (que é apenas a liberação de gases articulares saudáveis, e não os ossos quebrando!).
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="bg-white rounded-2xl shadow-sm border border-sage-100 overflow-hidden">
+                    <button onclick="toggleFAQ(2)" class="w-full text-left p-6 flex justify-between items-center hover:bg-sage-50/50 transition-colors focus:outline-none">
+                        <span class="font-serif font-bold text-slate-800 text-base sm:text-lg">Quantas sessões eu vou precisar?</span>
+                        <span id="faq-icon-2" class="w-6 h-6 rounded-full bg-sage-100 text-sage-800 flex items-center justify-center text-xs transform transition-transform duration-300"><i class="fa-solid fa-plus"></i></span>
+                    </button>
+                    <div id="faq-answer-2" class="hidden px-6 pb-6 text-sm sm:text-base text-slate-600 font-light leading-relaxed border-t border-slate-50 pt-4">
+                        Isso varia dependendo do seu histórico clínico e da gravidade do desalinhamento postural. Na primeira sessão realizamos uma avaliação completa para traçar um plano de tratamento personalizado. Muitos pacientes já sentem alívio total em 3 a 5 sessões.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="bg-white rounded-2xl shadow-sm border border-sage-100 overflow-hidden">
+                    <button onclick="toggleFAQ(3)" class="w-full text-left p-6 flex justify-between items-center hover:bg-sage-50/50 transition-colors focus:outline-none">
+                        <span class="font-serif font-bold text-slate-800 text-base sm:text-lg">Qual é a diferença entre Quiropraxia e Fisioterapia?</span>
+                        <span id="faq-icon-3" class="w-6 h-6 rounded-full bg-sage-100 text-sage-800 flex items-center justify-center text-xs transform transition-transform duration-300"><i class="fa-solid fa-plus"></i></span>
+                    </button>
+                    <div id="faq-answer-3" class="hidden px-6 pb-6 text-sm sm:text-base text-slate-600 font-light leading-relaxed border-t border-slate-50 pt-4">
+                        A quiropraxia é altamente focada no alinhamento articular da coluna e na liberação do fluxo do sistema nervoso. A fisioterapia atua na reabilitação global de músculos, tendões e postura corporal. O grande diferencial da Dra. Luciana é integrar o melhor dos dois mundos no mesmo atendimento!
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="bg-white rounded-2xl shadow-sm border border-sage-100 overflow-hidden">
+                    <button onclick="toggleFAQ(4)" class="w-full text-left p-6 flex justify-between items-center hover:bg-sage-50/50 transition-colors focus:outline-none">
+                        <span class="font-serif font-bold text-slate-800 text-base sm:text-lg">Gestantes podem realizar sessões de ajuste?</span>
+                        <span id="faq-icon-4" class="w-6 h-6 rounded-full bg-sage-100 text-sage-800 flex items-center justify-center text-xs transform transition-transform duration-300"><i class="fa-solid fa-plus"></i></span>
+                    </button>
+                    <div id="faq-answer-4" class="hidden px-6 pb-6 text-sm sm:text-base text-slate-600 font-light leading-relaxed border-t border-slate-50 pt-4">
+                        Sim! Inclusive, é extremamente recomendado para aliviar a sobrecarga na região lombar decorrente do ganho de peso e alteração do centro de gravidade da grávida. Usamos técnicas especiais e muito suaves para garantir a segurança da mãe e do bebê.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ONDE ATENDO (Mapa interativo + Endereço Premium) -->
+    <section class="py-20 lg:py-28 bg-white border-t border-sage-100" id="localizacao">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <!-- Informações de endereço e horário (5 Colunas) -->
+            <div class="lg:col-span-5 space-y-8">
+                <div class="space-y-4">
+                    <span class="text-xs font-semibold text-sage-600 uppercase tracking-[0.2em]">Venha nos visitar</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl text-clinical-dark font-bold tracking-tight">Onde Realizo Meus Atendimentos</h2>
+                    <p class="text-slate-500 text-sm sm:text-base font-light">Localizado em bairro nobre, com segurança, acessibilidade total e estacionamento privativo para o seu total conforto.</p>
+                </div>
+
+                <div class="space-y-6">
+                    <!-- Detalhe Endereço -->
+                    <div class="flex items-start space-x-4">
+                        <div class="w-10 h-10 rounded-xl bg-sage-50 border border-sage-100 flex items-center justify-center text-sage-600 flex-shrink-0 mt-1">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-slate-800">Endereço do Consultório</h4>
+                            <p id="clinic-address" class="text-sm text-slate-600 leading-relaxed font-light">Av. Paulista, 2000 — Conjunto 802 — Cerqueira César, São Paulo - SP</p>
+                            <a href="https://maps.google.com" target="_blank" class="text-xs text-gold-700 hover:text-gold-800 font-medium underline mt-1 block">Como chegar pelo GPS</a>
+                        </div>
+                    </div>
+
+                    <!-- Horário de Atendimento -->
+                    <div class="flex items-start space-x-4">
+                        <div class="w-10 h-10 rounded-xl bg-sage-50 border border-sage-100 flex items-center justify-center text-sage-600 flex-shrink-0 mt-1">
+                            <i class="fa-solid fa-clock"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-slate-800">Horário de Funcionamento</h4>
+                            <p class="text-sm text-slate-600 leading-relaxed font-light">Segunda a Sexta: 08:00 às 20:00</p>
+                            <p class="text-sm text-slate-600 leading-relaxed font-light">Sábados: 08:00 às 13:00 (Apenas com agendamento prévio)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Botão CTA -->
+                <div class="pt-2">
+                    <a href="https://wa.me/5511999999999" target="_blank" class="cta-whatsapp bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-8 py-4 rounded-xl shadow-md flex items-center justify-center space-x-2 text-center w-full sm:w-auto">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span>Solicitar Agendamento por Horário</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Mapa Estilizado (7 Colunas) -->
+            <div class="lg:col-span-7">
+                <div class="bg-slate-100 rounded-[2rem] overflow-hidden shadow-premium border border-sage-100 p-2 relative aspect-[16/10] min-h-[300px]">
+                    <!-- Simulated Premium Map com imagem representativa limpa -->
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.197594589932!2d-46.658742585022134!3d-23.559535384684534!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59cc0683a487%3A0xe54e58db54117a41!2sAv.%20Paulista%2C%202000%20-%20Bela%20Vista%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2001310-200!5e0!3m2!1spt-BR!2sbr!4v1684342000000!5m2!1spt-BR!2sbr" 
+                            class="w-full h-full rounded-[1.7rem] border-0" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER (Sofisticado, Clínico) -->
+    <footer class="bg-clinical-dark text-white pt-16 pb-8 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+            <!-- Coluna 1: Info e Branding -->
+            <div class="space-y-4 md:col-span-1">
+                <a href="#" class="flex flex-col">
+                    <span class="font-serif text-2xl font-bold tracking-tight text-white leading-none">Dra. Luciana</span>
+                    <span class="text-[9px] uppercase tracking-[0.2em] text-sage-200 font-semibold mt-1">Quiropraxia & Fisioterapia</span>
+                </a>
+                <p class="text-xs text-sage-200/70 font-light leading-relaxed">
+                    Tratamentos individualizados com embasamento científico para restaurar a saúde e o alinhamento completo da sua coluna vertebral.
+                </p>
+                <div class="flex items-center space-x-3 text-sage-200/60 pt-2">
+                    <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-instagram text-lg"></i></a>
+                    <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-facebook text-lg"></i></a>
+                    <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-linkedin text-lg"></i></a>
+                </div>
+            </div>
+
+            <!-- Coluna 2: Links Rápidos -->
+            <div class="space-y-4">
+                <h4 class="font-serif font-semibold text-sm tracking-widest text-gold-500 uppercase">Navegação</h4>
+                <ul class="space-y-2 text-xs text-sage-100/80 font-light">
+                    <li><a href="#sobre" class="hover:text-white transition-colors">Sobre Mim</a></li>
+                    <li><a href="#beneficios" class="hover:text-white transition-colors">Sintomas comuns</a></li>
+                    <li><a href="#diagnostico" class="hover:text-white transition-colors">Quiz Diagnóstico</a></li>
+                    <li><a href="#faq" class="hover:text-white transition-colors">Dúvidas Frequentes</a></li>
+                </ul>
+            </div>
+
+            <!-- Coluna 3: Especialidades -->
+            <div class="space-y-4">
+                <h4 class="font-serif font-semibold text-sm tracking-widest text-gold-500 uppercase">Tratamentos</h4>
+                <ul class="space-y-2 text-xs text-sage-100/80 font-light">
+                    <li><a href="#" class="hover:text-white transition-colors">Ajuste Quiroprático Manual</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Análise Postural de Precisão</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Liberação Miofascial Ativa</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Reabilitação de Coluna</a></li>
+                </ul>
+            </div>
+
+            <!-- Coluna 4: Informação Legal e CREFITO -->
+            <div class="space-y-4">
+                <h4 class="font-serif font-semibold text-sm tracking-widest text-gold-500 uppercase">Registro Profissional</h4>
+                <p class="text-xs text-sage-100/70 font-light leading-relaxed">
+                    Dra. Luciana F. S.<br>
+                    Crefito 3 — XXXXX-F<br>
+                    Membro da Associação Brasileira de Quiropraxia (ABQ - Registro de Especialidade).
+                </p>
+                <div class="p-3.5 bg-white/5 rounded-xl border border-white/5 text-[10px] text-sage-200/80">
+                    <i class="fa-solid fa-shield-halved mr-1.5 text-gold-500"></i> Local seguro e higienizado conforme as normas da ANVISA.
+                </div>
+            </div>
+        </div>
+
+        <hr class="border-white/5 my-8 max-w-7xl mx-auto">
+
+        <!-- Copyright e Créditos -->
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between text-[11px] text-sage-200/50 space-y-4 md:space-y-0">
+            <p>© 2026 Dra. Luciana Fisioterapia e Quiropraxia. Todos os direitos reservados.</p>
+            <p>Desenvolvido com maestria clínica para portfólio profissional de excelência.</p>
+        </div>
+    </footer>
+
+    <!-- BOTÃO FLUTUANTE DE WHATSAPP (CONVERSÃO CONSTANTE) -->
+    <a href="https://wa.me/5511999999999" target="_blank" class="cta-whatsapp fixed bottom-6 right-6 z-50 bg-emerald-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-floating hover:bg-emerald-700 transition-all transform hover:scale-110 active:scale-95 group">
+        <i class="fa-brands fa-whatsapp text-2xl"></i>
+        <!-- Tooltip animado no hover -->
+        <span class="absolute right-16 bg-clinical-dark text-white text-[11px] font-semibold px-3 py-1.5 rounded-lg whitespace-nowrap shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">Fale com a Dra. Luciana</span>
+    </a>
+
+    <!-- PAINEL ADMINISTRATIVO DEMONSTRATIVO (EXCLUSIVO PARA CANVAS) -->
+    <!-- Este painel flutuante permite que a Dra. Luciana mude os dados do site em tempo real e simule a rota administrativa -->
+    <div id="admin-panel" class="fixed left-4 bottom-4 z-50 bg-white border border-sage-200 rounded-3xl shadow-floating max-w-sm overflow-hidden transform translate-y-12 opacity-0 pointer-events-none transition-all duration-500">
+        <!-- Header Administrativo -->
+        <div class="bg-clinical-dark text-white px-5 py-4 flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <i class="fa-solid fa-gears text-gold-500 text-sm"></i>
+                <span class="font-serif font-bold text-sm">Painel Administrativo Real-Time</span>
+            </div>
+            <button onclick="toggleAdminPanel()" class="text-white/60 hover:text-white"><i class="fa-solid fa-xmark text-sm"></i></button>
+        </div>
+        <!-- Campos editáveis do cliente -->
+        <div class="p-5 space-y-4 max-h-[350px] overflow-y-auto">
+            <p class="text-[11px] text-slate-500">Modifique os valores abaixo para testar como o site reage instantaneamente aos comandos da Dra. Luciana.</p>
+            
+            <!-- Campo de WhatsApp -->
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">WhatsApp de Agendamento</label>
+                <input type="text" id="admin-input-whatsapp" value="5511999999999" oninput="updateWhatsAppLinks()" class="w-full text-xs p-2.5 rounded-lg border border-slate-200 focus:outline-none focus:border-sage-500">
+            </div>
+
+            <!-- Campo de Valor de Consulta / Mensagem Personalizada -->
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Endereço da Clínica</label>
+                <textarea id="admin-input-address" rows="2" oninput="updateAddressField()" class="w-full text-xs p-2.5 rounded-lg border border-slate-200 focus:outline-none focus:border-sage-500">Av. Paulista, 2000 — Conjunto 802 — Cerqueira César, São Paulo - SP</textarea>
+            </div>
+
+            <!-- Toggles de Sessões (Mostrar/Ocultar para economizar espaço de atendimento) -->
+            <div class="space-y-2">
+                <span class="block text-xs font-semibold text-slate-700">Controle de Seções</span>
+                <label class="flex items-center space-x-2 text-xs text-slate-600 cursor-pointer">
+                    <input type="checkbox" id="admin-toggle-faq" checked onchange="toggleSiteSection('faq', this.checked)" class="rounded text-sage-600 focus:ring-sage-500">
+                    <span>Exibir Dúvidas Frequentes (FAQ)</span>
+                </label>
+                <label class="flex items-center space-x-2 text-xs text-slate-600 cursor-pointer">
+                    <input type="checkbox" id="admin-toggle-ig" checked onchange="toggleSiteSection('instagram-section', this.checked)" class="rounded text-sage-600 focus:ring-sage-500">
+                    <span>Exibir Mockup do Instagram</span>
+                </label>
+            </div>
+            
+            <div class="pt-2 border-t border-slate-100 text-[10px] text-emerald-600 flex items-center space-x-1.5 font-semibold">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span>Todas as alterações aplicadas instantaneamente!</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botão de Ativação do Admin Panel (Flutuante para demonstração de tecnologia) -->
+    <button onclick="toggleAdminPanel()" class="fixed bottom-6 left-6 z-50 bg-clinical-dark hover:bg-slate-900 text-white text-xs font-bold px-4 py-3 rounded-xl shadow-floating flex items-center space-x-2 transition-all transform hover:scale-105 active:scale-95 border border-white/10">
+        <i class="fa-solid fa-sliders text-gold-500"></i>
+        <span>Painel do Cliente (Demo)</span>
+    </button>
+
+
+    <!-- JAVASCRIPT DE INTERATIVIDADE -->
+    <script>
+        // Função auxiliar para rolar até elementos
+        function scrollToElement(id) {
+            const el = document.getElementById(id);
+            if(el) {
+                el.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Menu de Navegação Mobile
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                icon.className = "fa-solid fa-xmark text-xl";
+            } else {
+                menu.classList.add('hidden');
+                icon.className = "fa-solid fa-bars text-xl";
+            }
+        }
+
+        // Quiz de Sintomas - Controle de Passos
+        let quizData = {
+            sintoma: '',
+            tempo: '',
+            intensidade: ''
+        };
+
+        function nextQuizStep(step, val) {
+            // Salvar escolhas
+            if (step === 2) quizData.sintoma = val;
+            if (step === 3) quizData.tempo = val;
+
+            // Transição de tela suave
+            document.getElementById('step-1').classList.add('hidden');
+            document.getElementById('step-2').classList.add('hidden');
+            document.getElementById('step-3').classList.add('hidden');
+            
+            document.getElementById(`step-${step}`).classList.remove('hidden');
+        }
+
+        function showQuizResult(intensity) {
+            quizData.intensidade = intensity;
+            
+            // Ocultar passos e mostrar tela de resultado
+            document.getElementById('step-3').classList.add('hidden');
+            document.getElementById('quiz-result').classList.remove('hidden');
+
+            // Determinar resultado customizado dinamicamente
+            const headline = document.getElementById('result-headline');
+            const description = document.getElementById('result-description');
+            const ctaBtn = document.getElementById('btn-quiz-cta');
+
+            let customSintomaText = "dor persistente";
+            if (quizData.sintoma === 'lombar') customSintomaText = "pressão na coluna lombar e quadril";
+            if (quizData.sintoma === 'cervical') customSintomaText = "rigidez na região cervical e tensão nos ombros";
+            if (quizData.sintoma === 'cabeca') customSintomaText = "enxaquecas constantes decorrentes de estresse físico";
+            if (quizData.sintoma === 'geral') customSintomaText = "perda de flexibilidade e fadiga postural geral";
+
+            if (intensity === 'grave') {
+                headline.innerText = "Alerta Clínico: Alta Compressão Articular";
+                headline.className = "font-medium text-rose-400";
+                description.innerHTML = `O seu caso de <strong>${customSintomaText}</strong> que já dura algum tempo e impede atividades cotidianas exige uma intervenção com urgência. A falta de alinhamento nas vértebras está forçando discos e nervos de maneira severa.`;
+            } else if (intensity === 'moderada') {
+                headline.innerText = "Recomendação de Alinhamento e Alívio de Tensão";
+                headline.className = "font-medium text-amber-400";
+                description.innerHTML = `Identificamos uma restrição de movimento articular significativa ligada à sua queixa de <strong>${customSintomaText}</strong>. Isso está atrapalhando sua performance de trabalho ou estudos. Ajustes corretivos imediatos trarão rápido alívio.`;
+            } else {
+                headline.innerText = "Indicação: Prevenção Postural Ativa";
+                headline.className = "font-medium text-emerald-400";
+                description.innerHTML = `Seus sintomas sugerem desalinhamentos leves a moderados. A Quiropraxia integrativa ajudará a restabelecer a amplitude de movimento ideal do seu corpo para evitar que essa queixa evolua para um quadro crônico.`;
+            }
+
+            // Customizar link de WhatsApp com o resultado para Dra. Luciana saber na hora
+            const baseWhatsapp = document.getElementById('admin-input-whatsapp').value;
+            const textMsg = encodeURIComponent(`Olá Dra. Luciana! Acabei de fazer a auto-avaliação do seu site. Meu resultado indicou provável "${headline.innerText}" com queixa de "${customSintomaText}". Gostaria de agendar uma consulta.`);
+            ctaBtn.href = `https://wa.me/${baseWhatsapp}?text=${textMsg}`;
+        }
+
+        function restartQuiz() {
+            document.getElementById('quiz-result').classList.add('hidden');
+            document.getElementById('step-1').classList.remove('hidden');
+            quizData = { sintoma: '', tempo: '', intensidade: '' };
+        }
+
+        // Controle da Seção de Dúvidas Frequentes (FAQ)
+        function toggleFAQ(id) {
+            const ans = document.getElementById(`faq-answer-${id}`);
+            const icon = document.getElementById(`faq-icon-${id}`);
+            
+            if (ans.classList.contains('hidden')) {
+                ans.classList.remove('hidden');
+                icon.innerHTML = '<i class="fa-solid fa-minus"></i>';
+                icon.className = "w-6 h-6 rounded-full bg-sage-800 text-white flex items-center justify-center text-xs transform rotate-180 transition-all duration-300";
+            } else {
+                ans.classList.add('hidden');
+                icon.innerHTML = '<i class="fa-solid fa-plus"></i>';
+                icon.className = "w-6 h-6 rounded-full bg-sage-100 text-sage-800 flex items-center justify-center text-xs transform rotate-0 transition-all duration-300";
+            }
+        }
+
+        // Mockup Instagram Lightbox
+        const igCaptions = {
+            'post-1': "Postura no Home Office: Você sabia que a altura da tela é a principal causadora de enxaquecas cervicais? Ajuste sua cadeira, mantenha os cotovelos apoiados e faça alongamentos de pescoço a cada 2 horas! 💻✨ #DicasDaDraLuciana #QuiropraxiaSp",
+            'post-2': "O famoso 'estalo' na quiropraxia: É dor ou alívio? Entenda que o som que você escuta é apenas o barulho de gás acumulado nas articulações (nitrogênio e CO2) sendo liberado com o ajuste. Isso gera um relaxamento instantâneo. 🌿👐 #Quiropraxia #SaudeDaColuna",
+            'post-3': "3 alongamentos essenciais antes de dormir para aliviar a lombar sobrecarregada pelo estresse diário. Siga o passo a passo e perceba a melhora imediata no seu sono e ao acordar. 🛌💤 #FisioterapiaIntegrativa #DormirSemDor",
+            'post-4': "Foco na Ergonomia no Trânsito: Como você ajusta o banco do seu carro? Uma postura relaxada demais provoca compensações que geram dor nas costas e pinçamento do nervo ciático. Faça o ajuste correto! 🚗🚦 #ColunaSaudavel #Quiroprata"
+        };
+
+        const igImages = {
+            'post-1': "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=600",
+            'post-2': "https://images.unsplash.com/photo-1599447421416-3414500d18a5?auto=format&fit=crop&q=80&w=600",
+            'post-3': "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&q=80&w=600",
+            'post-4': "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&q=80&w=600"
+        };
+
+        function openInstagramLightbox(postId) {
+            const modal = document.getElementById('instagram-lightbox');
+            const img = document.getElementById('lightbox-img');
+            const caption = document.getElementById('lightbox-caption');
+            
+            img.src = igImages[postId];
+            caption.innerText = igCaptions[postId];
+            
+            modal.classList.remove('hidden');
+        }
+
+        function closeInstagramLightbox() {
+            document.getElementById('instagram-lightbox').classList.add('hidden');
+        }
+
+        // ============================================
+        // FUNÇÕES DO PAINEL DO CLIENTE (ADMIN DEMO)
+        // ============================================
+        let adminPanelOpen = false;
+        function toggleAdminPanel() {
+            const panel = document.getElementById('admin-panel');
+            if (!adminPanelOpen) {
+                panel.classList.remove('translate-y-12', 'opacity-0', 'pointer-events-none');
+                adminPanelOpen = true;
+            } else {
+                panel.classList.add('translate-y-12', 'opacity-0', 'pointer-events-none');
+                adminPanelOpen = false;
+            }
+        }
+
+        function updateWhatsAppLinks() {
+            const newNum = document.getElementById('admin-input-whatsapp').value.trim();
+            const ctas = document.querySelectorAll('.cta-whatsapp');
+            ctas.forEach(cta => {
+                // Manter mensagem padrão se houver, ou apenas redirecionar para o novo número
+                if (cta.id === 'btn-quiz-cta') {
+                    // Atualiza o link gerado do quiz com o novo número
+                    const textMsg = encodeURIComponent("Olá Dra. Luciana! Acabei de fazer a auto-avaliação do seu site e gostaria de agendar uma consulta.");
+                    cta.href = `https://wa.me/${newNum}?text=${textMsg}`;
+                } else {
+                    cta.href = `https://wa.me/${newNum}`;
+                }
+            });
+        }
+
+        function updateAddressField() {
+            const newAddress = document.getElementById('admin-input-address').value;
+            document.getElementById('clinic-address').innerText = newAddress;
+        }
+
+        function toggleSiteSection(sectionId, isVisible) {
+            const section = document.getElementById(sectionId);
+            if (isVisible) {
+                section.classList.remove('hidden');
+            } else {
+                section.classList.add('hidden');
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio Mobilizare | Dra. Luciana</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fontes Premium: Playfair Display (Serif) + Inter (Sans-serif) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            cream: '#FAF8F5',     // Fundo Principal
+                            linen: '#F3EFE9',     // Estrutura/Areia
+                            charcoal: '#1E2229',  // Texto Principal e CTA
+                            gold: '#C5A880',      // Acentos Premium
+                            border: '#EAE5DF',    // Divisórias Sutis
+                        }
+                    },
+                    borderRadius: {
+                        '4xl': '2.5rem',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Decisões de Design baseadas no Refactoring UI: Controle fino do estilo */
+        body {
+            background-color: #FAF8F5;
+            color: #1E2229;
+        }
+
+        .image-placeholder {
+            background-color: #F3EFE9;
+            border: 2px dashed #C5A880;
+            color: #1E2229;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            aspect-ratio: 1 / 1;
+            border-radius: 2.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .text-balance {
+            text-wrap: balance;
+        }
+
+        /* Toasts e Animações */
+        #toast-message {
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in-up {
+            animation: fadeInUp 0.4s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col selection:bg-brand-gold/20">
+    
+    <!-- ========================================== -->
+    <!-- HEADER (Refactoring UI: Hierarquia Clara) -->
+    <!-- ========================================== -->
+    <header class="sticky top-0 z-40 bg-brand-cream/95 backdrop-blur-md border-b border-brand-border px-6 py-4 md:py-6 flex items-center justify-between">
+        <!-- Logo Minimalista 'M' -->
+        <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 rounded-full border border-brand-gold flex items-center justify-center font-serif text-xl font-semibold text-brand-gold">
+                M
+            </div>
+            <div class="hidden sm:flex flex-col">
+                <span class="font-serif text-base font-semibold tracking-wide text-brand-charcoal uppercase leading-tight">Studio Mobilizare</span>
+                <span class="text-[10px] tracking-[0.2em] uppercase text-brand-charcoal/60 -mt-0.5">Quiropraxia & Fisioterapia</span>
+            </div>
+        </div>
+
+        <!-- Navegação Desktop -->
+        <nav class="hidden lg:flex items-center space-x-8 text-xs font-medium uppercase tracking-wider text-brand-charcoal/70">
+            <a href="#sobre" class="hover:text-brand-charcoal transition-colors">Sobre</a>
+            <a href="#tratamentos" class="hover:text-brand-charcoal transition-colors">Tratamentos</a>
+            <a href="#depoimentos" class="hover:text-brand-charcoal transition-colors">Depoimentos</a>
+            <a href="#instagram-section" id="nav-ig-link" class="hover:text-brand-charcoal transition-colors">Instagram</a>
+        </nav>
+
+        <!-- Botão de Ação Principal (CTA) -->
+        <a href="https://wa.me/5511999999999?text=Olá! Gostaria de agendar uma consulta." 
+           id="btn-nav-cta"
+           target="_blank" 
+           class="bg-brand-charcoal text-white text-xs font-bold uppercase tracking-widest px-5 py-3 rounded-full hover:bg-brand-gold hover:text-brand-charcoal transition-all shadow-lg hover:shadow-brand-gold/30">
+            Agendar Consulta
+        </a>
+    </header>
+
+    <!-- ========================================== -->
+    <!-- HERO SECTION (Refactoring UI: Comece com muito espaço em branco) -->
+    <!-- ========================================== -->
+    <section class="max-w-7xl mx-auto px-6 py-12 md:py-24 grid md:grid-cols-2 gap-12 items-center">
+        <div class="space-y-8">
+            <!-- Tag de Destaque -->
+            <div class="inline-flex items-center space-x-2 bg-brand-linen px-4 py-1.5 rounded-full border border-brand-border">
+                <span class="w-2 h-2 bg-brand-gold rounded-full"></span>
+                <span class="text-[10px] uppercase tracking-widest font-medium text-brand-charcoal/70">Atendimento Individualizado</span>
+            </div>
+            
+            <!-- Título Principal -->
+            <h1 class="font-serif text-5xl md:text-6xl text-brand-charcoal tracking-tight text-balance leading-[1.1]">
+                Alívio de dores e <span class="italic text-brand-gold font-medium">liberdade</span><br> para o seu corpo se mover.
+            </h1>
+            
+            <!-- Texto de Apoio -->
+            <p class="text-sm md:text-base text-brand-charcoal/70 leading-relaxed max-w-lg">
+                Tratamentos manuais de Quiropraxia e Fisioterapia focados em devolver a sua qualidade de vida, sem remédios ou cirurgias.
+            </p>
+
+            <!-- Botões de Ação -->
+            <div class="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+                <a href="https://wa.me/5511999999999?text=Olá! Gostaria de agendar uma consulta." 
+                   id="btn-hero-cta"
+                   target="_blank" 
+                   class="bg-brand-charcoal text-white hover:bg-brand-gold hover:text-brand-charcoal text-center text-sm font-bold uppercase tracking-wider px-8 py-4 rounded-full transition-all shadow-xl shadow-brand-charcoal/15">
+                  Agendar pelo WhatsApp
+                </a>
+                <a href="#tratamentos" class="text-center text-sm font-bold uppercase tracking-wider py-4 hover:text-brand-gold transition-colors text-brand-charcoal/60">
+                  Conhecer serviços →
+                </a>
+            </div>
+        </div>
+
+        <!-- Placeholder da Imagem (Refactoring UI: Geometria elegante) -->
+        <div class="relative flex justify-center md:justify-end">
+            <div class="absolute inset-0 bg-brand-linen rounded-[2.5rem] transform translate-x-3 translate-y-3 -z-10"></div>
+            <div class="image-placeholder w-full max-w-md aspect-[4/5] relative overflow-hidden group hover:shadow-lg hover:border-brand-gold transition-all duration-300">
+                <!-- Ícone SVG Minimalista -->
+                <svg class="w-16 h-16 text-brand-charcoal/20 mb-4 transition-transform group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4a4 4 0 100 8 4 4 0 000-8zM12 14a8 8 0 00-8 8h16a8 8 0 00-8-8z"></path>
+                </svg>
+                <span class="font-serif text-base font-medium text-brand-charcoal/70">[Foto do Estúdio]</span>
+                <p class="text-[11px] text-brand-charcoal/40 max-w-[200px] mt-2 leading-relaxed">
+                  Espaço reservado para uma fotografia profissional e acolhedora da clínica.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- INTERATIVIDADE: ONDE DÓI? (Diagnóstico Rápido) -->
+    <!-- ========================================== -->
+    <section class="bg-brand-linen py-20 border-y border-brand-border">
+        <div class="max-w-4xl mx-auto px-6 text-center space-y-12">
+            <div class="space-y-3">
+                <span class="text-[10px] uppercase tracking-widest font-medium text-brand-gold">Triagem Rápida</span>
+                <h2 class="font-serif text-4xl text-brand-charcoal">Onde está sentindo dor hoje?</h2>
+                <p class="text-sm text-brand-charcoal/60 max-w-md mx-auto">Clique abaixo e receba um encaminhamento direto para a Dra. Luciana focado na sua queixa.</p>
+            </div>
+
+            <!-- Grid de Cards de Sintoma (Refactoring UI: Use menos bordas, mais espaço) -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- Dor Lombar -->
+                <button onclick="selecionarDor('Dor Lombar')" 
+                        class="group bg-brand-cream p-6 rounded-3xl border-2 border-transparent hover:border-brand-gold hover:shadow-lg transition-all duration-300 flex flex-col items-center justify-center gap-3">
+                    <div class="w-14 h-14 rounded-full bg-brand-linen flex items-center justify-center text-2xl group-hover:bg-brand-charcoal group-hover:text-brand-gold transition-colors">🦴</div>
+                    <span class="text-sm font-semibold text-brand-charcoal">Dor Lombar</span>
+                </button>
+
+                <!-- Dor no Pescoço -->
+                <button onclick="selecionarDor('Dor no Pescoço')" 
+                        class="group bg-brand-cream p-6 rounded-3xl border-2 border-transparent hover:border-brand-gold hover:shadow-lg transition-all duration-300 flex flex-col items-center justify-center gap-3">
+                    <div class="w-14 h-14 rounded-full bg-brand-linen flex items-center justify-center text-2xl group-hover:bg-brand-charcoal group-hover:text-brand-gold transition-colors">🔵</div>
+                    <span class="text-sm font-semibold text-brand-charcoal">Dor no Pescoço</span>
+                </button>
+
+                <!-- Articulações -->
+                <button onclick="selecionarDor('Articulações')" 
+                        class="group bg-brand-cream p-6 rounded-3xl border-2 border-transparent hover:border-brand-gold hover:shadow-lg transition-all duration-300 flex flex-col items-center justify-center gap-3">
+                    <div class="w-14 h-14 rounded-full bg-brand-linen flex items-center justify-center text-2xl group-hover:bg-brand-charcoal group-hover:text-brand-gold transition-colors">🤲</div>
+                    <span class="text-sm font-semibold text-brand-charcoal">Articulações</span>
+                </button>
+
+                <!-- Dor de Cabeça -->
+                <button onclick="selecionarDor('Dor de Cabeça')" 
+                        class="group bg-brand-cream p-6 rounded-3xl border-2 border-transparent hover:border-brand-gold hover:shadow-lg transition-all duration-300 flex flex-col items-center justify-center gap-3">
+                    <div class="w-14 h-14 rounded-full bg-brand-linen flex items-center justify-center text-2xl group-hover:bg-brand-charcoal group-hover:text-brand-gold transition-colors">🌀</div>
+                    <span class="text-sm font-semibold text-brand-charcoal">Dor de Cabeça</span>
+                </button>
+            </div>
+
+            <!-- Painel de Resposta (Refactoring UI: Em vez de usar rótulos, use contexto) -->
+            <div id="resultado-dor" class="hidden bg-brand-cream p-8 rounded-[2.5rem] border border-brand-border max-w-xl mx-auto space-y-6 animate-fade-in-up shadow-lg">
+                <p class="text-sm text-brand-charcoal/80">
+                    Queixa mapeada para atendimento em: <br>
+                    <strong id="nome-dor-selecionada" class="text-xl font-bold text-brand-gold font-serif block mt-1">Dor Lombar</strong>
+                </p>
+                <div class="bg-brand-linen/50 p-4 rounded-xl border border-brand-border text-xs text-left text-brand-charcoal/60 leading-relaxed">
+                    <p><span class="font-bold text-brand-charcoal">Próximo passo:</span> A Dra. Luciana fará uma avaliação postural e um ajuste quiroprático personalizado para aliviar a pressão na região selecionada.</p>
+                </div>
+                <a id="btn-whats-direcionado" href="#" target="_blank"
+                   class="inline-flex items-center justify-center w-full bg-brand-charcoal text-white px-8 py-4 rounded-full text-sm font-bold uppercase tracking-wider hover:bg-brand-gold hover:text-brand-charcoal transition-all shadow-lg">
+                  <span>Enviar queixa para a Dra. Luciana</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SOBRE A PROFISSIONAL -->
+    <!-- ========================================== -->
+    <section id="sobre" class="max-w-7xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-16 items-center">
+        <!-- Foto Placeholder da Profissional -->
+        <div class="relative">
+            <div class="absolute inset-0 bg-brand-border rounded-[2.5rem] transform -translate-x-3 translate-y-3 -z-10"></div>
+            <div class="image-placeholder aspect-[3/4] max-w-md mx-auto md:mx-0">
+                <svg class="w-16 h-16 text-brand-charcoal/20 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                </svg>
+                <span class="font-serif text-base font-medium text-brand-charcoal/70">[Foto da Dra. Luciana]</span>
+                <p class="text-[10px] text-brand-charcoal/40 mt-1">Uma foto de perfil profissional, olhando para a câmera com um sorriso acolhedor.</p>
+            </div>
+        </div>
+
+        <!-- Texto da Bio -->
+        <div class="space-y-6 text-center md:text-left">
+            <span class="text-[10px] uppercase tracking-widest font-medium text-brand-gold">Quem Cuida de Você</span>
+            <h2 class="font-serif text-4xl text-brand-charcoal leading-tight">
+                Dra. Luciana <br><span class="text-brand-charcoal/60 italic font-normal text-2xl">Fisioterapeuta & Quiroprata</span>
+            </h2>
+            <p class="text-sm text-brand-charcoal/70 leading-relaxed">
+                Com mais de 10 anos de experiência clínica, minha missão vai além de aliviar a dor. Busco entender a raiz do desalinhamento corporal para devolver a liberdade de movimento, unindo a precisão da Quiropraxia com a empatia da Fisioterapia Integrativa.
+            </p>
+            <div class="border-l-2 border-brand-gold pl-5 space-y-1 max-w-xs mx-auto md:mx-0">
+                <p class="text-xs font-semibold text-brand-charcoal">Abordagem Humanizada</p>
+                <p class="text-xs text-brand-charcoal/60">Cada paciente é único, e o tratamento é desenhado sob medida para você.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TRATAMENTOS (Refactoring UI: Estabeleça um sistema de tamanhos) -->
+    <!-- ========================================== -->
+    <section id="tratamentos" class="bg-brand-cream border-y border-brand-border py-24 px-6">
+        <div class="max-w-6xl mx-auto space-y-16">
+            <div class="text-center space-y-3 max-w-2xl mx-auto">
+                <span class="text-[10px] uppercase tracking-widest font-medium text-brand-gold">Nossas Especialidades</span>
+                <h2 class="font-serif text-4xl text-brand-charcoal">Técnicas que transformam o corpo</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Quiropraxia -->
+                <div class="bg-brand-cream border border-brand-border p-8 rounded-3xl space-y-6 hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+                    <div class="text-3xl">🤲</div>
+                    <h3 class="font-serif text-xl text-brand-charcoal">Quiropraxia</h3>
+                    <p class="text-sm text-brand-charcoal/60 leading-relaxed">
+                        Alinhamento e ajuste articular de alta velocidade e precisão para restabelecer a comunicação do sistema nervoso e liberar os movimentos.
+                    </p>
+                </div>
+
+                <!-- Ventosaterapia -->
+                <div class="bg-brand-cream border border-brand-border p-8 rounded-3xl space-y-6 hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+                    <div class="text-3xl">🌿</div>
+                    <h3 class="font-serif text-xl text-brand-charcoal">Ventosaterapia</h3>
+                    <p class="text-sm text-brand-charcoal/60 leading-relaxed">
+                        Estimulação da circulação sanguínea profunda, aliviando a rigidez crônica do tecido e acelerando a recuperação muscular natural.
+                    </p>
+                </div>
+
+                <!-- Liberação Miofascial -->
+                <div class="bg-brand-cream border border-brand-border p-8 rounded-3xl space-y-6 hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+                    <div class="text-3xl">💆‍♀️</div>
+                    <h3 class="font-serif text-xl text-brand-charcoal">Liberação Miofascial</h3>
+                    <p class="text-sm text-brand-charcoal/60 leading-relaxed">
+                        Técnica de massagem profunda que solta os nós musculares acumulados pelo estresse diário ou esforço físico intenso.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- DEPOIMENTOS (Prova Social) -->
+    <!-- ========================================== -->
+    <section id="depoimentos" class="bg-brand-linen py-24 px-6 border-b border-brand-border">
+        <div class="max-w-5xl mx-auto space-y-12">
+            <div class="text-center space-y-3">
+                <span class="text-[10px] uppercase tracking-widest font-medium text-brand-gold">Quem confia no nosso trabalho</span>
+                <h2 class="font-serif text-4xl text-brand-charcoal">Depoimentos de pacientes</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Depoimento 1 -->
+                <div class="bg-brand-cream border border-brand-border p-8 rounded-[2.5rem] space-y-6 relative">
+                    <span class="absolute top-8 right-10 text-6xl text-brand-gold/20 font-serif leading-none">“</span>
+                    <div class="relative z-10">
+                        <p class="text-sm text-brand-charcoal/80 italic leading-relaxed">
+                            "Cheguei ao estúdio com uma crise de dor lombar aguda que me impedia de trabalhar. Logo na primeira sessão de quiropraxia senti um alívio gigante. Recomendo muito!"
+                        </p>
+                        <div class="pt-6 mt-6 border-t border-brand-border">
+                            <p class="text-sm font-semibold text-brand-charcoal">Mariana S.</p>
+                            <p class="text-xs text-brand-charcoal/50">Paciente de Quiropraxia</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Depoimento 2 -->
+                <div class="bg-brand-cream border border-brand-border p-8 rounded-[2.5rem] space-y-6 relative">
+                    <span class="absolute top-8 right-10 text-6xl text-brand-gold/20 font-serif leading-none">“</span>
+                    <div class="relative z-10">
+                        <p class="text-sm text-brand-charcoal/80 italic leading-relaxed">
+                            "A liberação muscular combinada com a quiropraxia salvou meus treinos. A Dra. Luciana é incrivelmente técnica e humana no seu atendimento."
+                        </p>
+                        <div class="pt-6 mt-6 border-t border-brand-border">
+                            <p class="text-sm font-semibold text-brand-charcoal">Rodrigo F.</p>
+                            <p class="text-xs text-brand-charcoal/50">Atleta Amador</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- INSTAGRAM (Mockup de Feed com Hover) -->
+    <!-- ========================================== -->
+    <section id="instagram-section" class="bg-brand-cream py-24 px-6 border-b border-brand-border">
+        <div class="max-w-5xl mx-auto space-y-12">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div class="space-y-2">
+                    <span class="text-[10px] uppercase tracking-widest font-medium text-brand-gold">Acompanhe nossa rotina</span>
+                    <h2 class="font-serif text-4xl text-brand-charcoal">Siga no Instagram</h2>
+                    <p class="text-sm text-brand-charcoal/60 max-w-md">Dicas de postura, bastidores da clínica e conteúdos exclusivos.</p>
+                </div>
+                <a href="https://www.instagram.com/studiomobilizare/" target="_blank" class="text-sm font-semibold text-brand-gold hover:underline">
+                    @studiomobilizare →
+                </a>
+            </div>
+
+            <!-- Grid Interativo -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- Post 1 -->
+                <a href="https://www.instagram.com/studiomobilizare/" target="_blank" class="group relative aspect-square bg-brand-linen rounded-3xl overflow-hidden border border-brand-border flex flex-col items-center justify-center text-center p-4 hover:shadow-md transition-shadow">
+                    <span class="text-brand-charcoal/40 text-[10px] font-medium text-center">[Post do Instagram 1]</span>
+                    <div class="absolute inset-0 bg-brand-charcoal/85 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center text-white text-sm font-medium space-x-6">
+                        <span class="flex items-center gap-1.5">❤️ 42</span>
+                        <span class="flex items-center gap-1.5">💬 5</span>
+                    </div>
+                </a>
+                <!-- Post 2 -->
+                <a href="https://www.instagram.com/studiomobilizare/" target="_blank" class="group relative aspect-square bg-brand-linen rounded-3xl overflow-hidden border border-brand-border flex flex-col items-center justify-center text-center p-4 hover:shadow-md transition-shadow">
+                    <span class="text-brand-charcoal/40 text-[10px] font-medium text-center">[Post do Instagram 2]</span>
+                    <div class="absolute inset-0 bg-brand-charcoal/85 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center text-white text-sm font-medium space-x-6">
+                        <span class="flex items-center gap-1.5">❤️ 89</span>
+                        <span class="flex items-center gap-1.5">💬 12</span>
+                    </div>
+                </a>
+                <!-- Post 3 -->
+                <a href="https://www.instagram.com/studiomobilizare/" target="_blank" class="group relative aspect-square bg-brand-linen rounded-3xl overflow-hidden border border-brand-border flex flex-col items-center justify-center text-center p-4 hover:shadow-md transition-shadow">
+                    <span class="text-brand-charcoal/40 text-[10px] font-medium text-center">[Post do Instagram 3]</span>
+                    <div class="absolute inset-0 bg-brand-charcoal/85 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center text-white text-sm font-medium space-x-6">
+                        <span class="flex items-center gap-1.5">❤️ 61</span>
+                        <span class="flex items-center gap-1.5">💬 8</span>
+                    </div>
+                </a>
+                <!-- Post 4 -->
+                <a href="https://www.instagram.com/studiomobilizare/" target="_blank" class="group relative aspect-square bg-brand-linen rounded-3xl overflow-hidden border border-brand-border flex flex-col items-center justify-center text-center p-4 hover:shadow-md transition-shadow">
+                    <span class="text-brand-charcoal/40 text-[10px] font-medium text-center">[Post do Instagram 4]</span>
+                    <div class="absolute inset-0 bg-brand-charcoal/85 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center text-white text-sm font-medium space-x-6">
+                        <span class="flex items-center gap-1.5">❤️ 105</span>
+                        <span class="flex items-center gap-1.5">💬 14</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- RODAPÉ (Refactoring UI: Menos bordas, mais tipografia) -->
+    <!-- ========================================== -->
+    <footer class="bg-brand-charcoal text-brand-cream py-12 px-6 border-t border-white/5">
+        <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 items-start md:items-center">
+            <div class="space-y-3">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 border border-brand-cream/30 rounded-full flex items-center justify-center font-serif text-sm font-semibold">M</div>
+                    <span class="font-serif tracking-widest uppercase text-sm">Studio Mobilizare</span>
+                </div>
+                <p class="text-xs text-brand-cream/60 max-w-xs leading-relaxed">
+                    Tratamento de Quiropraxia e Fisioterapia para alívio de dores articulares e musculares.
+                </p>
+            </div>
+
+            <div class="text-xs space-y-3 text-brand-cream/70">
+                <p class="font-semibold text-brand-cream text-sm font-serif tracking-wider">Localização</p>
+                <p>Endereço Físico do Studio, Cidade - Estado</p>
+                <p>Atendimento apenas sob agendamento prévio.</p>
+            </div>
+            
+            <div class="text-xs space-y-3 text-brand-cream/70 text-left md:text-right">
+                <p class="font-semibold text-brand-cream text-sm font-serif tracking-wider">Horário</p>
+                <p>Seg - Sex: 08:00 - 19:00</p>
+                <p>Sáb: 08:00 - 13:00 (Mediante agendamento)</p>
+            </div>
+        </div>
+        
+        <div class="max-w-5xl mx-auto border-t border-brand-cream/10 mt-10 pt-6 flex flex-col sm:flex-row justify-between text-[10px] text-brand-cream/40">
+            <p>© 2026 Studio Mobilizare. Todos os direitos reservados.</p>
+            <p>Pensado com <span class="text-brand-gold">♥</span> para a sua saúde.</p>
+        </div>
+    </footer>
+
+    <!-- ========================================== -->
+    <!-- BOTÃO FLUTUANTE WHATSAPP (Conversão Constante) -->
+    <!-- ========================================== -->
+    <a href="https://wa.me/5511999999999?text=Olá! Gostaria de agendar uma consulta." 
+       id="btn-floating-wa"
+       target="_blank"
+       class="fixed bottom-6 right-6 z-40 bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 hover:shadow-[#25D366]/40 transition-all duration-300 flex items-center justify-center">
+        <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.965C16.528 1.978 14.074.956 11.48.956c-5.437 0-9.864 4.373-9.868 9.803-.001 1.738.468 3.43 1.36 4.947L1.87 20.76l5.01-1.307c1.3.1 2.2.3 3.5.3z"></path>
+        </svg>
+    </a>
+
+    <!-- ========================================== -->
+    <!-- RECURSO ESPECIAL: PAINEL ADMIN (Com Toggle e Controle de Número) -->
+    <!-- ========================================== -->
+    <div id="admin-panel" class="fixed bottom-4 left-4 z-50 bg-brand-charcoal text-white rounded-3xl p-5 shadow-2xl border border-brand-gold/30 max-w-xs transition-all duration-300 transform translate-y-[125%]">
+        <div class="flex items-center justify-between border-b border-white/10 pb-2 mb-3">
+            <span class="text-xs font-bold uppercase tracking-wider text-brand-gold flex items-center space-x-1.5">
+                ⚙️ Painel Admin
+            </span>
+            <button onclick="toggleAdminPanel()" class="text-xs text-white/50 hover:text-white">✖️</button>
+        </div>
+        
+        <p class="text-[10px] text-white/60 mb-4 leading-relaxed">
+            Simulador de controle que a Dra. Luciana teria. Teste em tempo real!
+        </p>
+
+        <div class="space-y-4">
+            <!-- Interruptor do Instagram -->
+            <div class="flex items-center justify-between">
+                <label class="text-xs font-medium text-white/80">Exibir Seção Instagram</label>
+                <button onclick="toggleInstagramSection()" id="btn-toggle-ig" class="w-10 h-6 bg-brand-gold rounded-full p-1 transition-colors relative flex items-center">
+                    <div id="dot-ig" class="w-4 h-4 bg-brand-charcoal rounded-full transform translate-x-4 transition-transform"></div>
+                </button>
+            </div>
+
+            <!-- Campo de Celular para WhatsApp -->
+            <div class="space-y-1.5">
+                <label class="text-[10px] uppercase font-bold text-white/60">WhatsApp (DDD+Número)</label>
+                <div class="flex space-x-1.5">
+                    <input type="text" id="input-phone" value="5511999999999" class="bg-white/10 border border-white/20 text-xs rounded px-2 py-1.5 w-full text-white placeholder-white/30">
+                    <button onclick="atualizarCelular()" class="bg-brand-gold text-brand-charcoal font-bold text-[10px] px-3 rounded hover:bg-brand-gold/80 transition-colors">OK</button>
+                </div>
+                <p id="msg-sucesso-phone" class="text-[9px] text-emerald-400 transition-opacity duration-300 opacity-0">Número atualizado em todo o site!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botão para abrir o painel admin (Canto inferior esquerdo) -->
+    <button id="btn-admin-floating" onclick="toggleAdminPanel()" class="fixed bottom-4 left-4 z-40 bg-brand-charcoal text-brand-gold hover:bg-brand-charcoal/90 p-3 rounded-full shadow-lg border border-brand-gold/20 flex items-center justify-center text-xs space-x-1 transition-transform hover:scale-105">
+        <span>⚙️ Admin</span>
+    </button>
+
+
+    <!-- ========================================== -->
+    <!-- JAVASCRIPT: LÓGICAS INTERATIVAS E PAINEL ADMIN -->
+    <!-- ========================================== -->
+    <script>
+        // 1. SIMULAÇÃO DO DIAGNÓSTICO RÁPIDO
+        function selecionarDor(sintoma) {
+            // Limpar destaque de todos os botões (removido visualmente, mas fica elegante)
+            const botoes = document.querySelectorAll('#resultado-dor');
+            document.querySelectorAll('button[onclick*="selecionarDor"]').forEach(btn => {
+                btn.classList.remove('ring-2', 'ring-brand-gold', 'shadow-lg');
+            });
+
+            // Mostrar o painel de resultado
+            const painel = document.getElementById('resultado-dor');
+            const textoDor = document.getElementById('nome-dor-selecionada');
+            const linkBotao = document.getElementById('btn-whats-direcionado');
+
+            textoDor.innerText = sintoma;
+            painel.classList.remove('hidden');
+            painel.classList.add('animate-fade-in-up');
+
+            // Capturar o número atual do WhatsApp
+            const basePhone = document.getElementById('input-phone').value;
+
+            // Montar URL com Mensagem Customizada
+            const textoMsg = `Olá Dra. Luciana! Vi o seu site e gostaria de agendar uma consulta focada na minha queixa de: ${sintoma}.`;
+            const urlFinal = `https://wa.me/${basePhone}?text=${encodeURIComponent(textoMsg)}`;
+            linkBotao.setAttribute('href', urlFinal);
+        }
+
+        // 2. PAINEL ADMIN: ALTERNAR VISIBILIDADE
+        let adminAberto = false;
+        function toggleAdminPanel() {
+            const panel = document.getElementById('admin-panel');
+            const btnFloating = document.getElementById('btn-admin-floating');
+
+            if (!adminAberto) {
+                panel.classList.remove('translate-y-[125%]');
+                panel.classList.add('translate-y-0');
+                btnFloating.classList.add('hidden');
+                adminAberto = true;
+            } else {
+                panel.classList.add('translate-y-[125%]');
+                panel.classList.remove('translate-y-0');
+                btnFloating.classList.remove('hidden');
+                adminAberto = false;
+            }
+        }
+
+        // 3. PAINEL ADMIN: EXIBIR/OCULTAR INSTAGRAM
+        let instagramVisivel = true;
+        function toggleInstagramSection() {
+            instagramVisivel = !instagramVisivel;
+            const section = document.getElementById('instagram-section');
+            const dot = document.getElementById('dot-ig');
+            const btn = document.getElementById('btn-toggle-ig');
+            const navLink = document.getElementById('nav-ig-link');
+
+            if (instagramVisivel) {
+                section.classList.remove('hidden');
+                navLink.classList.remove('hidden');
+                dot.classList.add('translate-x-4');
+                dot.classList.remove('translate-x-0');
+                btn.classList.add('bg-brand-gold');
+                btn.classList.remove('bg-white/20');
+            } else {
+                section.classList.add('hidden');
+                navLink.classList.add('hidden');
+                dot.classList.remove('translate-x-4');
+                dot.classList.add('translate-x-0');
+                btn.classList.remove('bg-brand-gold');
+                btn.classList.add('bg-white/20');
+            }
+        }
+
+        // 4. PAINEL ADMIN: ATUALIZAR TELEFONE DINAMICAMENTE
+        function atualizarCelular() {
+            const novoNum = document.getElementById('input-phone').value;
+            
+            // Selecionar todos os links e botões de WhatsApp em todo o DOM
+            const links = [
+                document.getElementById('btn-nav-cta'),
+                document.getElementById('btn-hero-cta'),
+                document.getElementById('btn-whats-direcionado'),
+                document.getElementById('btn-floating-wa')
+            ];
+
+            // Atualizar os links principais e qualquer outro que contenha wa.me (exceto o input)
+            links.forEach(link => {
+                if(link) {
+                    const url = new URL(link.href);
+                    let params = new URLSearchParams(url.search);
+                    link.href = `https://wa.me/${novoNum}?${params.toString()}`;
+                }
+            });
+
+            // Feedback de sucesso
+            const feedback = document.getElementById('msg-sucesso-phone');
+            feedback.classList.remove('opacity-0');
+            feedback.classList.add('opacity-100');
+            setTimeout(() => {
+                feedback.classList.remove('opacity-100');
+                feedback.classList.add('opacity-0');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
