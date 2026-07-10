@@ -23,5 +23,7 @@ dist-ssr
 *.sln
 *.sw?
 
-```text
-contexto-projeto-ai.md
+# Sandbox de IA (Brainstorm & Contexto)
+contexto-projeto-ai*.md
+.ai-context/
+bundle-aihowtorun.md

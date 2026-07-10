@@ -1,11 +1,20 @@
 import fs from 'fs';
 import path from 'path';
 
-// Configurações do empacotador
-const OUTPUT_FILE = 'contexto-projeto-ai.md';
-const DIRECTORY_TO_SCAN = './'; // Direitório atual (raiz do projeto)
+// Configuração do seu brainstorm: Pasta dedicada para as IAs
+const OUTPUT_DIR = './.ai-context'; 
+const FILE_PREFIX = 'contexto-projeto-ai-';
+const DIRECTORY_TO_SCAN = './'; 
 
-// Pastas e arquivos que devem ser completamente ignorados
+// Gerar data e hora para o carimbo visual na barra lateral
+const agora = new Date();
+const dataFormated = agora.toISOString().split('T')[0]; 
+const horaFormated = String(agora.getHours()).padStart(2, '0') + '-' + String(agora.getMinutes()).padStart(2, '0'); 
+const TIMESTAMP = `${dataFormated}_${horaFormated}`;
+const OUTPUT_FILE = path.join(OUTPUT_DIR, `${FILE_PREFIX}${TIMESTAMP}.md`);
+
+// LISTA DE IGNORE: Ignoramos apenas coisas que pesam o prompt sem necessidade.
+// Mantivemos os arquivos da pasta 'testeshtml' de fora para que entrem no seu contexto!
 const IGNORE_LIST = [
   'node_modules',
   '.git',
@@ -15,41 +24,57 @@ const IGNORE_LIST = [
   'package-lock.json',
   'yarn.lock',
   'pnpm-lock.yaml',
-  OUTPUT_FILE,        // Ignorar o próprio arquivo de saída
-  'bundle-ai.js',     // Ignorar este script
+  'bundle-ai.js',
+  'bundle-aihowtorun.txt',
+  '.ai-context' // Ignora a própria pasta para não entrar em loop infinito
 ];
 
-// Extensões binárias ou de mídia que não devem ser lidas como texto
 const BINARY_EXTENSIONS = [
   '.png', '.jpg', '.jpeg', '.gif', '.ico', '.pdf', '.svg',
   '.woff', '.woff2', '.ttf', '.eot', '.mp4', '.mov', '.zip'
 ];
 
-// Cabeçalho inicial do documento para contextualizar a IA receptora
+// Garantir que a pasta de contexto exista antes de gerar o arquivo
+if (!fs.existsSync(OUTPUT_DIR)) {
+  fs.mkdirSync(OUTPUT_DIR, { recursive: true });
+}
+
+// Limpa arquivos antigos para não acumular lixo na pasta .ai-context
+function limparContextosAntigos() {
+  const arquivos = fs.readdirSync(OUTPUT_DIR);
+  arquivos.forEach(arquivo => {
+    if (arquivo.startsWith(FILE_PREFIX) && arquivo.endsWith('.md')) {
+      try {
+        fs.unlinkSync(path.join(OUTPUT_DIR, arquivo));
+      } catch (err) {
+        console.warn(`⚠️ Não foi possível deletar o arquivo antigo: ${arquivo}`);
+      }
+    }
+  });
+}
+
 const buildHeader = () => {
   return `# CONTEXTO DO PROJETO - STUDIO MOBILIZARE
+> 🗓️ **Última Atualização:** ${agora.toLocaleDateString('pt-BR')} às ${agora.toLocaleTimeString('pt-BR')}
 
-Olá! Este arquivo contém a estrutura completa e o código-fonte atualizado do projeto **Studio Mobilizare** (Landing Page de Quiropraxia e Fisioterapia para a Dra. Luciana).
-Este projeto foi gerado com **React + Vite** e estilizado com **Tailwind CSS**.
+Olá! Este arquivo contém a estrutura limpa e o código-fonte do projeto **Studio Mobilizare** (incluindo testes e rascunhos em HTML).
 
 ### Instruções para a IA:
-1. Use as seções abaixo para compreender todo o projeto.
-2. Ao sugerir alterações de código, indique claramente em qual arquivo a mudança deve ser aplicada.
-3. Respeite as regras de paleta de cores premium (Off-white, Areia, Grafite, Dourado quente) e os ensinamentos do livro "Refactoring UI" discutidos anteriormente.
+1. Siga a paleta de cores: Off-white (#FAF8F5), Areia (#F3EFE9), Grafite (#1E2229) e Dourado Terroso (#C5A880).
+2. Baseie-se nos conceitos de design limpo do livro "Refactoring UI".
 
 ---
 
-## 📁 ESTRUTURA DE ARQUIVOS DO PROJETO
+## 📁 ESTRUTURA DE ARQUIVOS
 `;
 };
 
-// Função para gerar uma representação em árvore da estrutura de arquivos
 function generateTree(dir, prefix = '') {
   let tree = '';
   const files = fs.readdirSync(dir);
 
   files.forEach((file, index) => {
-    if (IGNORE_LIST.includes(file)) return;
+    if (IGNORE_LIST.includes(file) || IGNORE_LIST.includes(path.relative('./', path.join(dir, file)).replace(/\\/g, '/'))) return;
 
     const filePath = path.join(dir, file);
     const isDirectory = fs.statSync(filePath).isDirectory();
@@ -65,12 +90,12 @@ function generateTree(dir, prefix = '') {
   return tree;
 }
 
-// Função para ler recursivamente e concatenar os arquivos de código
 function concatFiles(dir, fileList = []) {
   const files = fs.readdirSync(dir);
 
   files.forEach(file => {
-    if (IGNORE_LIST.includes(file)) return;
+    const relativePath = path.relative('./', path.join(dir, file)).replace(/\\/g, '/');
+    if (IGNORE_LIST.includes(file) || IGNORE_LIST.includes(relativePath)) return;
 
     const filePath = path.join(dir, file);
     const stat = fs.statSync(filePath);
@@ -88,19 +113,19 @@ function concatFiles(dir, fileList = []) {
   return fileList;
 }
 
-// Função principal que executa a geração do contexto
 function buildContext() {
-  console.log('🔄 Iniciando mapeamento do projeto para IA...');
+  console.log('🧹 Fazendo faxina na pasta de IA (.ai-context)...');
+  limparContextosAntigos();
+
+  console.log('🔄 Empacotando arquivos do projeto (incluindo rascunhos HTML)...');
   
   try {
     let outputContent = buildHeader();
 
-    // 1. Adiciona a árvore de arquivos ao output
     outputContent += '```text\n';
     outputContent += generateTree(DIRECTORY_TO_SCAN);
     outputContent += '```\n\n---\n\n## 📝 CÓDIGO-FONTE DOS ARQUIVOS\n\n';
 
-    // 2. Coleta e adiciona o conteúdo de cada arquivo válido
     const allFiles = concatFiles(DIRECTORY_TO_SCAN);
 
     allFiles.forEach(filePath => {
@@ -114,13 +139,12 @@ function buildContext() {
       outputContent += '\n\`\`\`\n\n';
     });
 
-    // 3. Escreve o arquivo final
     fs.writeFileSync(OUTPUT_FILE, outputContent, 'utf8');
-    console.log(`✅ Sucesso! O arquivo de contexto foi gerado em: "${OUTPUT_FILE}"`);
-    console.log('💡 Dica: Agora é só abrir esse arquivo, dar Ctrl+A, Ctrl+C e jogar na IA de sua preferência!');
+    console.log(`\n✅ Sucesso! Contexto gerado com data e hora dentro de: "${OUTPUT_FILE}"`);
+    console.log('💡 Dica: Agora é só abrir a pasta .ai-context no explorer e copiar o arquivo gerado!');
 
   } catch (error) {
-    console.error('❌ Ocorreu um erro ao gerar o arquivo de contexto:', error);
+    console.error('❌ Erro ao rodar o empacotador:', error);
   }
 }
 
