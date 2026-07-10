@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Comparação PRO - Studio Mobilizare</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #0f1115; color: #e2e8f0; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        .iframe-wrapper {
+            position: relative;
+            width: 100%;
+            height: 600px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+            border: 1px solid #2d3748;
+            transition: transform 0.2s;
+        }
+        .iframe-wrapper:hover { transform: translateY(-2px); }
+        iframe { width: 100%; height: 100%; border: none; border-radius: 12px; }
+        .status-bar {
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            background: rgba(15, 17, 21, 0.9);
+            backdrop-filter: blur(4px);
+            padding: 8px 16px;
+            border-bottom: 1px solid #2d3748;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 20;
+            border-radius: 12px 12px 0 0;
+        }
+        .badge {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 700;
+        }
+        .badge-file { background: #C5A880; color: #000; }
+        .controls-panel {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(15, 17, 21, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #2d3748;
+        }
+        .error-overlay {
+            position: absolute;
+            inset: 0;
+            background: #1a202c;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            z-index: 15;
+            border-radius: 12px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="controls-panel px-6 py-4 flex flex-wrap items-center justify-between gap-4">
+        <div>
+            <h1 class="text-xl font-bold flex items-center gap-2">
+                <span class="text-[#C5A880]">Studio Mobilizare</span>
+                <span class="text-gray-500 text-sm font-normal">| Comparador Visual</span>
+            </h1>
+            <p class="text-xs text-gray-400">Ambiente de Testes: Fisioterapia & Quiropraxia</p>
+        </div>
+        
+        <div class="flex items-center gap-3">
+            <div class="flex items-center bg-gray-800 rounded-lg p-1">
+                <button onclick="setCols(1)" class="px-3 py-1 rounded hover:bg-gray-700 transition text-xs">1 Col</button>
+                <button onclick="setCols(2)" class="px-3 py-1 rounded bg-gray-700 transition text-xs">2 Cols</button>
+                <button onclick="setCols(3)" class="px-3 py-1 rounded hover:bg-gray-700 transition text-xs">3 Cols</button>
+            </div>
+            <button onclick="reloadAll()" class="bg-[#C5A880] hover:bg-[#b39670] text-black font-bold py-2 px-4 rounded-lg text-xs transition-all flex items-center gap-2">
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+                RECARREGAR TUDO
+            </button>
+        </div>
+    </div>
+
+    <div id="gridContainer" class="grid grid-cols-1 md:grid-cols-2 gap-8 p-8">
+        <!-- Os iframes serão injetados aqui via JS para melhor controle de erro -->
+    </div>
+
+    <script>
+        // Lista de arquivos baseada na estrutura que você enviou
+        const files = [
+            'teste1.html',
+            'teste2current.html',
+            'teste3deepseek.html',
+            'teste4manus.html',
+            'teste5deepseek2.html'
+        ];
+
+        const gridContainer = document.getElementById('gridContainer');
+
+        function init() {
+            gridContainer.innerHTML = '';
+            files.forEach(file => {
+                const card = document.createElement('div');
+                card.className = 'space-y-3';
+                card.innerHTML = `
+                    <div class="iframe-wrapper">
+                        <div class="status-bar">
+                            <span class="badge badge-file">${file}</span>
+                            <div class="flex gap-2">
+                                <button onclick="openNewTab('${file}')" class="text-gray-400 hover:text-white transition">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div id="error-${file.replace(/\./g, '-')}" class="error-overlay">
+                            <svg class="w-12 h-12 text-red-500 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                            <p class="text-sm font-bold">Arquivo não encontrado</p>
+                            <p class="text-xs text-gray-400 mt-1">Certifique-se de que o arquivo está na mesma pasta.</p>
+                        </div>
+                        <iframe src="${file}" id="frame-${file.replace(/\./g, '-')}" onerror="handleError('${file}')" onload="checkFrame('${file}')"></iframe>
+                    </div>
+                `;
+                gridContainer.appendChild(card);
+            });
+        }
+
+        function setCols(n) {
+            gridContainer.className = `grid grid-cols-1 ${n > 1 ? 'md:grid-cols-' + n : ''} gap-8 p-8`;
+            // Atualiza botões
+            document.querySelectorAll('.controls-panel button').forEach(btn => {
+                if (btn.innerText.includes(n + ' Col')) {
+                    btn.classList.add('bg-gray-700');
+                } else if (btn.innerText.includes('Col')) {
+                    btn.classList.remove('bg-gray-700');
+                }
+            });
+        }
+
+        function reloadAll() {
+            const iframes = document.querySelectorAll('iframe');
+            iframes.forEach(f => f.src = f.src);
+        }
+
+        function openNewTab(file) {
+            window.open(file, '_blank');
+        }
+
+        function checkFrame(file) {
+            const id = `frame-${file.replace(/\./g, '-')}`;
+            const errorId = `error-${file.replace(/\./g, '-')}`;
+            const frame = document.getElementById(id);
+            const errorOverlay = document.getElementById(errorId);
+            
+            try {
+                // Tenta acessar o conteúdo para ver se carregou (pode falhar por CORS se não for Live Server)
+                // Se estiver no Live Server, isso funciona.
+                if (frame.contentWindow.location.href.includes('about:blank')) {
+                     errorOverlay.style.display = 'flex';
+                }
+            } catch (e) {
+                // Se der erro de CORS, provavelmente o arquivo existe e carregou (segurança do navegador)
+                console.log("CORS check passed for " + file);
+            }
+        }
+
+        function handleError(file) {
+            const errorId = `error-${file.replace(/\./g, '-')}`;
+            document.getElementById(errorId).style.display = 'flex';
+        }
+
+        init();
+    </script>
+</body>
+</html>
