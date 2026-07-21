@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Studio Mobilizare | Feed do Instagram</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Fontes Premium: Playfair Display + Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
+          },
+          colors: {
+            brand: {
+              cream: '#FAF8F5',     // Off-white acolhedor de fundo
+              linen: '#F3EFE9',     // Areia para blocos e contraste sutil
+              charcoal: '#1E2229',  // Grafite elegante principal
+              gold: '#C5A880',      // Dourado terroso premium para realces
+              border: '#EAE5DF',    // Linhas divisórias delicadas
+            }
+          },
+          boxShadow: {
+            'soft': '0 4px 30px rgba(30, 34, 41, 0.02)',
+            'premium': '0 20px 50px rgba(30, 34, 41, 0.04)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #FAF8F5;
+      color: #1E2229;
+    }
+    
+    /* Remove a barra de rolagem visual padrão para manter o design limpo */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-brand-gold selection:text-brand-charcoal min-h-screen flex flex-col justify-between py-12">
+
+  <!-- CONTAINER CENTRAL -->
+  <main class="max-w-6xl mx-auto px-6 w-full my-auto space-y-10">
+    
+    <!-- Cabeçalho Elegante do Feed -->
+    <div class="text-center space-y-3">
+      <div class="flex items-center justify-center space-x-3">
+        <!-- Monograma -->
+        <div class="w-10 h-10 border border-brand-charcoal/20 rounded-full flex items-center justify-center font-serif text-sm font-semibold text-brand-charcoal bg-brand-linen">
+          M
+        </div>
+        <span class="font-serif text-xl tracking-widest uppercase text-brand-charcoal font-bold">Studio Mobilizare</span>
+      </div>
+      <p class="text-xs text-brand-charcoal/50 tracking-wider">
+        Acompanhe nossa rotina de Pilates & Bem-estar em Manaus no <a href="https://www.instagram.com/studiomobilizare/" target="_blank" class="text-brand-gold font-bold hover:underline">@studiomobilizare</a>
+      </p>
+    </div>
+
+    <!-- ÁREA DO CARROSSEL COM BOTÕES LATERAIS -->
+    <div class="relative px-4 sm:px-12 group">
+      
+      <!-- BOTÃO ESQUERDA (Sideway Scroll) -->
+      <button onclick="scrollCarouselLeft()" 
+              class="absolute left-0 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-brand-charcoal text-brand-gold border border-brand-gold/30 flex items-center justify-center shadow-lg hover:bg-brand-gold hover:text-brand-charcoal transition-all focus:outline-none"
+              aria-label="Rolar para esquerda">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path>
+        </svg>
+      </button>
+
+      <!-- BOTÃO DIREITA (Sideway Scroll) -->
+      <button onclick="scrollCarouselRight()" 
+              class="absolute right-0 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-brand-charcoal text-brand-gold border border-brand-gold/30 flex items-center justify-center shadow-lg hover:bg-brand-gold hover:text-brand-charcoal transition-all focus:outline-none"
+              aria-label="Rolar para direita">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path>
+        </svg>
+      </button>
+
+      <!-- CONTAINER DE ROLAGEM HORIZONTAL (Snap-Scroll) -->
+      <div id="instagram-carousel" 
+           class="flex space-x-6 overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar py-4 px-2 justify-start md:justify-center">
+        
+        <!-- CARD POST 1 -->
+        <div class="snap-center shrink-0 w-[310px] sm:w-[350px] bg-brand-linen rounded-2xl border border-brand-border p-3 shadow-soft flex flex-col justify-between">
+          <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/DLzwux2O_u5/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:12px; margin: 0; width:100%;">
+            <div style="padding:16px;"> 
+              <a href="https://www.instagram.com/p/DLzwux2O_u5/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank">
+                <div style=" display: flex; flex-direction: row; align-items: center;">
+                  <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div>
+                  <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;">
+                    <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div>
+                    <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div>
+                  </div>
+                </div>
+                <div style="padding: 19% 0;"></div>
+                <p style=" color:#1E2229; font-family:Arial,sans-serif; font-size:14px; line-height:17px; text-align:center;">Ver post no Instagram</p>
+              </a>
+            </div>
+          </blockquote>
+        </div>
+
+        <!-- CARD POST 2 -->
+        <div class="snap-center shrink-0 w-[310px] sm:w-[350px] bg-brand-linen rounded-2xl border border-brand-border p-3 shadow-soft flex flex-col justify-between">
+          <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/DWHGU-rjhRh/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:12px; margin: 0; width:100%;">
+            <div style="padding:16px;"> 
+              <a href="https://www.instagram.com/p/DWHGU-rjhRh/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank">
+                <div style=" display: flex; flex-direction: row; align-items: center;">
+                  <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div>
+                  <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;">
+                    <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div>
+                    <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div>
+                  </div>
+                </div>
+                <div style="padding: 19% 0;"></div>
+                <p style=" color:#1E2229; font-family:Arial,sans-serif; font-size:14px; line-height:17px; text-align:center;">Ver post no Instagram</p>
+              </a>
+            </div>
+          </blockquote>
+        </div>
+
+        <!-- CARD POST 3 -->
+        <div class="snap-center shrink-0 w-[310px] sm:w-[350px] bg-brand-linen rounded-2xl border border-brand-border p-3 shadow-soft flex flex-col justify-between">
+          <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/DYKR4NRjnXX/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:12px; margin: 0; width:100%;">
+            <div style="padding:16px;"> 
+              <a href="https://www.instagram.com/p/DYKR4NRjnXX/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank">
+                <div style=" display: flex; flex-direction: row; align-items: center;">
+                  <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div>
+                  <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;">
+                    <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div>
+                    <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div>
+                  </div>
+                </div>
+                <div style="padding: 19% 0;"></div>
+                <p style=" color:#1E2229; font-family:Arial,sans-serif; font-size:14px; line-height:17px; text-align:center;">Ver post no Instagram</p>
+              </a>
+            </div>
+          </blockquote>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mensagem de Apoio Visual -->
+    <p class="text-center text-[10px] uppercase tracking-widest text-brand-charcoal/40 font-semibold md:hidden">
+      👈 Deslize para o lado ou use os botões para navegar 👉
+    </p>
+
+  </main>
+
+  <!-- RODAPÉ SUTIL -->
+  <footer class="text-center text-[11px] text-brand-charcoal/40 uppercase tracking-widest mt-auto">
+    © 2026 Studio Mobilizare • Desenvolvido por Lucas
+  </footer>
+
+  <!-- SCRIPT OFICIAL DO INSTAGRAM PARA EMBED -->
+  <script async src="https://www.instagram.com/embed.js"></script>
+
+  <!-- LÓGICAS DO CARROSSEL -->
+  <script>
+    const carousel = document.getElementById('instagram-carousel');
+
+    // Controla o movimento de rolagem para a esquerda
+    function scrollCarouselLeft() {
+      // Move a quantidade equivalente a um card + o espaçamento lateral
+      carousel.scrollBy({ left: -370, behavior: 'smooth' });
+    }
+
+    // Controla o movimento de rolagem para a direita
+    function scrollCarouselRight() {
+      carousel.scrollBy({ left: 370, behavior: 'smooth' });
+    }
+
+    // Recarrega os embeds caso o script do Instagram precise reprocessar a página
+    window.onload = function() {
+      if (window.instgrm) {
+        window.instgrm.Embeds.process();
+      }
+    }
+  </script>
+</body>
+</html>

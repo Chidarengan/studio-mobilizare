@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Studio Mobilizare | Pilates & Quiropraxia em Manaus</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Fontes Premium: Playfair Display + Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
+          },
+          colors: {
+            brand: {
+              cream: '#FAF8F5',     // Off-white acolhedor de fundo
+              linen: '#F3EFE9',     // Areia para blocos e contraste sutil
+              charcoal: '#1E2229',  // Grafite elegante principal
+              gold: '#C5A880',      // Dourado terroso premium para realces
+              border: '#EAE5DF',    // Linhas divisórias delicadas
+            }
+          },
+          boxShadow: {
+            'soft': '0 4px 30px rgba(30, 34, 41, 0.02)',
+            'premium': '0 20px 50px rgba(30, 34, 41, 0.04)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #FAF8F5;
+      color: #1E2229;
+    }
+    .text-balance {
+      text-wrap: balance;
+    }
+    /* Transição suave para estados ativos */
+    .fade-enter {
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 300ms ease-out, transform 300ms ease-out;
+    }
+    .fade-enter-active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Customização fina da barra de rolagem do Instagram para manter a elegância */
+    .custom-scrollbar::-webkit-scrollbar {
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #F3EFE9;
+      border-radius: 10px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #C5A880;
+      border-radius: 10px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #b59670;
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-brand-gold selection:text-brand-charcoal min-h-screen flex flex-col justify-between">
+
+  <!-- BARRA DE DESTAQUE SUPERIOR (Acesso Rápido Informativo) -->
+  <div class="w-full bg-brand-charcoal text-brand-cream text-[10px] uppercase tracking-[0.25em] py-2.5 px-6 text-center font-medium">
+    Studio Mobilizare • Pilates & Quiropraxia na Cidade Nova • Agende pelo WhatsApp
+  </div>
+
+  <!-- NAVBAR (Sticky, refinada e minimalista) -->
+  <header class="w-full bg-brand-cream/80 backdrop-blur-md sticky top-0 z-40 border-b border-brand-border px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center space-x-3">
+      <!-- Monograma da marca -->
+      <div class="w-9 h-9 border border-brand-charcoal/20 rounded-full flex items-center justify-center font-serif text-sm font-semibold text-brand-charcoal bg-brand-linen">
+        M
+      </div>
+      <div class="flex flex-col">
+        <span class="font-serif text-base font-bold tracking-wide text-brand-charcoal uppercase leading-none">Studio Mobilizare</span>
+        <span class="text-[9px] tracking-[0.22em] uppercase text-brand-gold font-semibold mt-1">Pilates & Bem-estar</span>
+      </div>
+    </div>
+
+    <!-- Navegação focada -->
+    <nav class="hidden md:flex items-center space-x-10 text-[11px] font-semibold uppercase tracking-widest text-brand-charcoal/60">
+      <a href="#sobre" class="hover:text-brand-charcoal transition-colors">O Studio</a>
+      <a href="#metodos" class="hover:text-brand-charcoal transition-colors">Modalidades</a>
+      <a href="#depoimentos" class="hover:text-brand-charcoal transition-colors">Depoimentos</a>
+      <a href="#instagram-section" id="nav-ig-link" class="hover:text-brand-charcoal transition-colors">Instagram</a>
+    </nav>
+
+    <!-- Menu Dropdown para Agendamento Rápido no Topo -->
+    <div class="relative inline-block text-left">
+      <a href="#metodos" 
+         class="border border-brand-charcoal/30 hover:bg-brand-charcoal hover:text-white text-brand-charcoal text-[11px] font-bold uppercase tracking-widest px-5 py-3 rounded-full transition-all">
+        Fale Conosco
+      </a>
+    </div>
+  </header>
+
+  <!-- HERO SECTION (Decisão de Entrada: Aula Experimental vs Consulta Clínica) -->
+  <section class="max-w-7xl mx-auto px-6 py-12 md:py-24 grid md:grid-cols-12 gap-12 items-center">
+    <div class="md:col-span-7 space-y-8">
+      <div class="inline-flex items-center space-x-2 bg-brand-linen px-3 py-1.5 rounded-full">
+        <span class="w-1.5 h-1.5 bg-brand-gold rounded-full"></span>
+        <span class="text-[9px] uppercase tracking-widest font-bold text-brand-charcoal/70">Atendimento Exclusivo em Manaus</span>
+      </div>
+      
+      <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl text-brand-charcoal tracking-tight leading-[1.1] text-balance">
+        Conecte mente e corpo para uma <span class="italic text-brand-gold font-normal">vida sem limitações</span>.
+      </h1>
+      
+      <p class="text-sm sm:text-base text-brand-charcoal/60 leading-relaxed max-w-xl">
+        Escolha o seu caminho para o bem-estar no Studio Mobilizare. Oferecemos Pilates clínico de alta performance e Quiropraxia para alívio imediato de dores.
+      </p>
+
+      <!-- Duas Opções de Ação Claras e Distintas (Sem Repetição de WhatsApp de mesma função) -->
+      <div class="flex flex-col sm:flex-row items-stretch sm:items-center space-y-3 sm:space-y-0 sm:space-x-4 pt-4">
+        <!-- Opção 1: Foco em Pilates (Aula Experimental) -->
+        <a href="https://wa.me/5592984572635?text=Olá! Gostaria de agendar uma aula experimental de Pilates no Studio Mobilizare." 
+           target="_blank" 
+           id="btn-hero-pilates"
+           class="bg-brand-charcoal hover:bg-brand-gold text-brand-cream hover:text-brand-charcoal text-center text-[11px] font-bold uppercase tracking-widest px-7 py-5 rounded-full transition-all shadow-lg shadow-brand-charcoal/10">
+          Agendar Aula de Pilates
+        </a>
+        
+        <!-- Opção 2: Foco Clínico (Consulta de Quiropraxia) -->
+        <a href="https://wa.me/5592984572635?text=Olá Dra. Luciana! Gostaria de agendar uma consulta de avaliação clínica / Quiropraxia no Studio Mobilizare." 
+           target="_blank" 
+           id="btn-hero-quiro"
+           class="border border-brand-charcoal text-brand-charcoal hover:bg-brand-charcoal hover:text-white text-center text-[11px] font-bold uppercase tracking-widest px-7 py-5 rounded-full transition-all">
+          Marcar Quiropraxia
+        </a>
+      </div>
+    </div>
+
+    <!-- Imagem de Destaque Premium (Estética de Bem-estar e Paz) -->
+    <div class="md:col-span-5 relative">
+      <div class="absolute inset-0 bg-brand-linen rounded-[2rem] transform translate-x-3 translate-y-3 -z-10"></div>
+      <div class="w-full aspect-[4/5] rounded-[2rem] border border-brand-border overflow-hidden relative group">
+        <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=800&q=80" 
+             alt="Prática de bem-estar corporal e Pilates" 
+             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+        <div class="absolute inset-0 bg-gradient-to-t from-brand-charcoal/30 to-transparent"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERATIVIDADE: SELETOR DE OBJETIVOS (Triagem Express Premium) -->
+  <section class="bg-brand-linen py-16 px-6 border-y border-brand-border">
+    <div class="max-w-4xl mx-auto text-center space-y-10">
+      <div class="space-y-2">
+        <span class="text-[9px] uppercase tracking-widest font-bold text-brand-gold">Seu Momento</span>
+        <h2 class="font-serif text-3xl text-brand-charcoal tracking-tight">Qual é o seu principal objetivo hoje?</h2>
+        <p class="text-xs text-brand-charcoal/50">Selecione para direcionar seu atendimento personalizado no Studio Mobilizare:</p>
+      </div>
+
+      <!-- Cards de Objetivos (Lógica Refactoring UI: Evitar formulários chatos) -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <!-- Card 1 -->
+        <button onclick="selecionarObjetivo('Melhorar a Postura', 'postura', 'Pilates', 'Gostaria de agendar uma aula de Pilates focado em postura')" 
+                id="card-postura"
+                class="bg-brand-cream border border-brand-border p-6 rounded-2xl flex flex-col items-center justify-center space-y-3 transition-all hover:scale-[1.02] hover:shadow-soft group">
+          <div class="w-10 h-10 rounded-full bg-brand-linen flex items-center justify-center text-lg text-brand-gold group-hover:bg-brand-charcoal group-hover:text-white transition-colors">
+            🧘‍♀️
+          </div>
+          <span class="text-[11px] font-bold uppercase tracking-wider text-brand-charcoal">Melhorar Postura</span>
+        </button>
+
+        <!-- Card 2 -->
+        <button onclick="selecionarObjetivo('Alívio de Dores', 'dores', 'Quiropraxia', 'Gostaria de agendar uma consulta de Quiropraxia para alívio de dores')" 
+                id="card-dores"
+                class="bg-brand-cream border border-brand-border p-6 rounded-2xl flex flex-col items-center justify-center space-y-3 transition-all hover:scale-[1.02] hover:shadow-soft group">
+          <div class="w-10 h-10 rounded-full bg-brand-linen flex items-center justify-center text-lg text-brand-gold group-hover:bg-brand-charcoal group-hover:text-white transition-colors">
+            🦴
+          </div>
+          <span class="text-[11px] font-bold uppercase tracking-wider text-brand-charcoal">Alívio de Dores</span>
+        </button>
+
+        <!-- Card 3 -->
+        <button onclick="selecionarObjetivo('Reduzir o Estresse', 'estresse', 'Pilates', 'Gostaria de agendar uma aula experimental de Pilates para reduzir o estresse')" 
+                id="card-estresse"
+                class="bg-brand-cream border border-brand-border p-6 rounded-2xl flex flex-col items-center justify-center space-y-3 transition-all hover:scale-[1.02] hover:shadow-soft group">
+          <div class="w-10 h-10 rounded-full bg-brand-linen flex items-center justify-center text-lg text-brand-gold group-hover:bg-brand-charcoal group-hover:text-white transition-colors">
+            🍃
+          </div>
+          <span class="text-[11px] font-bold uppercase tracking-wider text-brand-charcoal">Reduzir Estresse</span>
+        </button>
+
+        <!-- Card 4 -->
+        <button onclick="selecionarObjetivo('Ganhar Flexibilidade', 'flexibilidade', 'Pilates', 'Gostaria de agendar uma aula experimental de Pilates para flexibilidade')" 
+                id="card-flexibilidade"
+                class="bg-brand-cream border border-brand-border p-6 rounded-2xl flex flex-col items-center justify-center space-y-3 transition-all hover:scale-[1.02] hover:shadow-soft group">
+          <div class="w-10 h-10 rounded-full bg-brand-linen flex items-center justify-center text-lg text-brand-gold group-hover:bg-brand-charcoal group-hover:text-white transition-colors">
+            🌀
+          </div>
+          <span class="text-[11px] font-bold uppercase tracking-wider text-brand-charcoal">Flexibilidade</span>
+        </button>
+      </div>
+
+      <!-- Bloco de Resultado Dinâmico (Sóbrio, elegante e integrado à paleta de luxo) -->
+      <div id="resultado-triagem" class="hidden max-w-lg mx-auto bg-brand-cream p-8 rounded-3xl border border-brand-border space-y-5 shadow-soft">
+        <p class="text-xs text-brand-charcoal/60 leading-relaxed">
+          Para quem busca <strong id="objetivo-nome" class="text-brand-gold uppercase tracking-wider text-xs">Melhorar a Postura</strong>, o Studio Mobilizare indica sessões de <span id="servico-indicado" class="font-bold text-brand-charcoal">Pilates</span> presenciais para alinhamento e consciência corporal.
+        </p>
+        <a id="btn-whats-triado" href="#" target="_blank"
+           class="inline-flex items-center space-x-2 bg-brand-charcoal hover:bg-brand-gold text-brand-cream hover:text-brand-charcoal px-6 py-4 rounded-full text-[11px] font-bold uppercase tracking-widest shadow-md transition-all">
+          <span>Prosseguir pelo WhatsApp</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- O STUDIO & A DRA LUCIANA (Construção de Autoridade & Empatia) -->
+  <section id="sobre" class="max-w-6xl mx-auto px-6 py-20 lg:py-28 grid md:grid-cols-2 gap-12 items-center">
+    <!-- Imagem de bem-estar com paleta de cores acolhedora e luz solar -->
+    <div class="relative">
+      <div class="absolute inset-0 bg-brand-linen rounded-[2.5rem] transform -translate-x-3 translate-y-3 -z-10"></div>
+      <div class="w-full aspect-square rounded-[2.5rem] border border-brand-border overflow-hidden relative group">
+        <img src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=800&q=80" 
+             alt="Ambiente calmo e iluminado do estúdio" 
+             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+        <div class="absolute inset-0 bg-gradient-to-t from-brand-charcoal/30 to-transparent"></div>
+      </div>
+    </div>
+
+    <!-- Informações Enxutas e Focadas da Profissional -->
+    <div class="space-y-6">
+      <span class="text-[9px] uppercase tracking-widest font-bold text-brand-gold">O Conceito</span>
+      <h2 class="font-serif text-3xl sm:text-4xl text-brand-charcoal leading-tight">
+        Dra. Luciana <br><span class="text-brand-charcoal/50 italic font-normal text-2xl">Cuidado personalizado em Manaus</span>
+      </h2>
+      <p class="text-sm text-brand-charcoal/60 leading-relaxed">
+        No Studio Mobilizare, cada pessoa é cuidada individualmente. Associamos a precisão da Quiropraxia para alinhamento físico com os movimentos do Pilates clínico para fortalecimento e bem-estar integral.
+      </p>
+
+      <!-- Diferenciais rápidos -->
+      <div class="space-y-4 pt-4 border-t border-brand-border">
+        <div class="flex items-start space-x-3">
+          <span class="text-brand-gold mt-0.5">✔</span>
+          <div>
+            <h4 class="text-xs font-bold uppercase tracking-wider text-brand-charcoal">Ambiente Exclusivo</h4>
+            <p class="text-xs text-brand-charcoal/50">Estúdio aconchegante e calmo localizado no bairro Cidade Nova.</p>
+          </div>
+        </div>
+
+        <div class="flex items-start space-x-3">
+          <span class="text-brand-gold mt-0.5">✔</span>
+          <div>
+            <h4 class="text-xs font-bold uppercase tracking-wider text-brand-charcoal">Foco no Seu Ritmo</h4>
+            <p class="text-xs text-brand-charcoal/50">Aulas estruturadas respeitando os limites e evolução do seu corpo.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODALIDADES (Cards Limpos e com Texturas de Imagens Abstratas) -->
+  <section id="metodos" class="bg-brand-cream border-t border-brand-border py-20 px-6">
+    <div class="max-w-5xl mx-auto space-y-12">
+      <div class="text-center space-y-2">
+        <span class="text-[9px] uppercase tracking-widest font-bold text-brand-gold">Nossos Serviços</span>
+        <h2 class="font-serif text-3xl text-brand-charcoal tracking-tight">O que oferecemos</h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- Serviço 1: Pilates -->
+        <div class="bg-brand-cream border border-brand-border rounded-3xl overflow-hidden hover:shadow-soft transition-all">
+          <div class="h-48 overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1599447421416-3414500d18a5?auto=format&fit=crop&w=500&q=80" alt="Aula de Pilates" class="w-full h-full object-cover">
+          </div>
+          <div class="p-6 space-y-3">
+            <h3 class="font-serif text-lg font-bold text-brand-charcoal">Pilates Presencial</h3>
+            <p class="text-xs text-brand-charcoal/50 leading-relaxed">
+              Trabalho completo de postura, flexibilidade e fortalecimento do core com acompanhamento próximo em aparelhos.
+            </p>
+          </div>
+        </div>
+
+        <!-- Serviço 2: Quiropraxia -->
+        <div class="bg-brand-cream border border-brand-border rounded-3xl overflow-hidden hover:shadow-soft transition-all">
+          <div class="h-48 overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1519813538030-f5a941551277?auto=format&fit=crop&w=500&q=80" alt="Alinhamento e ajuste corporal" class="w-full h-full object-cover">
+          </div>
+          <div class="p-6 space-y-3">
+            <h3 class="font-serif text-lg font-bold text-brand-charcoal">Quiropraxia Clínica</h3>
+            <p class="text-xs text-brand-charcoal/50 leading-relaxed">
+              Manipulações articulares e ajustes precisos para destravar o corpo e restabelecer o funcionamento do sistema nervoso.
+            </p>
+          </div>
+        </div>
+
+        <!-- Serviço 3: Bem-estar Integral -->
+        <div class="bg-brand-cream border border-brand-border rounded-3xl overflow-hidden hover:shadow-soft transition-all">
+          <div class="h-48 overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?auto=format&fit=crop&w=500&q=80" alt="Relaxamento e descompressão muscular" class="w-full h-full object-cover">
+          </div>
+          <div class="p-6 space-y-3">
+            <h3 class="font-serif text-lg font-bold text-brand-charcoal">Cuidado Integrado</h3>
+            <p class="text-xs text-brand-charcoal/50 leading-relaxed">
+              A combinação perfeita de liberação miofascial e ventosaterapia para descompressão profunda muscular.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEPOIMENTOS REALISTAS (Prova Social de Alto Padrão) -->
+  <section id="depoimentos" class="bg-brand-linen py-20 px-6 border-t border-brand-border">
+    <div class="max-w-4xl mx-auto space-y-12">
+      <div class="text-center space-y-2">
+        <span class="text-[9px] uppercase tracking-widest font-bold text-brand-gold">Histórias Reais</span>
+        <h2 class="font-serif text-3xl text-brand-charcoal tracking-tight">O que dizem os alunos e pacientes</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Testemunho 1 -->
+        <div class="bg-brand-cream border border-brand-border p-8 rounded-3xl space-y-4 relative shadow-soft">
+          <span class="absolute top-6 right-8 text-4xl text-brand-gold/10 font-serif">“</span>
+          <p class="text-xs text-brand-charcoal/70 italic leading-relaxed">
+            "Comecei a fazer Pilates no Studio Mobilizare por causa de constantes dores nas costas e cansaço físico. Hoje, sinto meu corpo muito mais leve, alongado e com a postura completamente corrigida."
+          </p>
+          <div class="pt-2">
+            <p class="text-xs font-bold text-brand-charcoal uppercase tracking-wider">Aline M.</p>
+            <p class="text-[9px] text-brand-charcoal/40 font-semibold uppercase">Aluna de Pilates - Cidade Nova</p>
+          </div>
+        </div>
+
+        <!-- Testemunho 2 -->
+        <div class="bg-brand-cream border border-brand-border p-8 rounded-3xl space-y-4 relative shadow-soft">
+          <span class="absolute top-6 right-8 text-4xl text-brand-gold/10 font-serif">“</span>
+          <p class="text-xs text-brand-charcoal/70 italic leading-relaxed">
+            "Sempre fui travado e achava que dores nas articulações eram normais do dia a dia. A quiropraxia clínica me devolveu a mobilidade que eu não tinha há anos. Atendimento maravilhoso!"
+          </p>
+          <div class="pt-2">
+            <p class="text-xs font-bold text-brand-charcoal uppercase tracking-wider">Fabrício S.</p>
+            <p class="text-[9px] text-brand-charcoal/40 font-semibold uppercase">Paciente de Quiropraxia</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTAGRAM REAL COM CARROSSEL HORIZONTAL E SNAP-SCROLL -->
+  <section id="instagram-section" class="bg-brand-cream py-20 px-6 border-t border-brand-border">
+    <div class="max-w-6xl mx-auto space-y-8">
+      
+      <!-- Cabeçalho de Redes -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div class="space-y-1">
+          <span class="text-[9px] uppercase tracking-widest font-bold text-brand-gold">Acompanhe nosso estúdio</span>
+          <h2 class="font-serif text-3xl text-brand-charcoal">Instagram do Studio</h2>
+          <p class="text-xs text-brand-charcoal/50">Acesse publicações reais direto do nosso perfil oficial no Instagram.</p>
+        </div>
+        <a href="https://www.instagram.com/studiomobilizare/" target="_blank" class="text-xs font-bold text-brand-gold uppercase tracking-wider hover:underline flex items-center space-x-1">
+          <span>@studiomobilizare</span>
+          <span>→</span>
+        </a>
+      </div>
+
+      <!-- CARROSSEL / SLIDER COM SNAP SCROLL (Excelente Usabilidade em Celulares) -->
+      <div class="flex space-x-6 overflow-x-auto pb-6 pt-2 snap-x snap-mandatory scroll-smooth custom-scrollbar justify-start lg:justify-center">
+        
+        <!-- Post 1 -->
+        <div class="snap-center shrink-0 w-[330px] bg-white rounded-2xl border border-brand-border p-3 shadow-soft flex flex-col justify-between">
+          <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/DLzwux2O_u5/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; margin: 1px; width:100%;">
+            <div style="padding:16px;">
+              <a href="https://www.instagram.com/p/DLzwux2O_u5/?utm_source=ig_embed&amp;utm_campaign=loading" target="_blank" style="text-decoration:none; color:#1E2229;">
+                <div style="display: flex; flex-direction: row; align-items: center;">
+                  <div style="background-color: #F4F4F4; border-radius: 50%; height: 40px; width: 40px; margin-right: 14px;"></div>
+                  <div style="display: flex; flex-direction: column; flex-grow: 1;">
+                    <div style="background-color: #F4F4F4; border-radius: 4px; height: 14px; margin-bottom: 6px; width: 100px;"></div>
+                    <div style="background-color: #F4F4F4; border-radius: 4px; height: 14px; width: 60px;"></div>
+                  </div>
+                </div>
+                <div style="padding: 19% 0;"></div>
+                <div style="display:block; height:50px; margin:0 auto 12px; width:50px;">
+                  <svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" fill="#C5A880">
+                    <path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 ..."></path>
+                  </svg>
+                </div>
+                <p style="color:#1E2229; font-size:14px; line-height:17px; text-align:center;">Ver essa publicação no Instagram</p>
+              </a>
+            </div>
+          </blockquote>
+        </div>
+
+        <!-- Post 2 -->
+        <div class="snap-center shrink-0 w-[330px] bg-white rounded-2xl border border-brand-border p-3 shadow-soft flex flex-col justify-between">
+          <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/DWHGU-rjhRh/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; margin: 1px; width:100%;">
+            <div style="padding:16px;">
+              <a href="https://www.instagram.com/p/DWHGU-rjhRh/?utm_source=ig_embed&amp;utm_campaign=loading" target="_blank" style="text-decoration:none; color:#1E2229;">
+                <div style="display: flex; flex-direction: row; align-items: center;">
+                  <div style="background-color: #F4F4F4; border-radius: 50%; height: 40px; width: 40px; margin-right: 14px;"></div>
+                  <div style="display: flex; flex-direction: column; flex-grow: 1;">
+                    <div style="background-color: #F4F4F4; border-radius: 4px; height: 14px; margin-bottom: 6px; width: 100px;"></div>
+                    <div style="background-color: #F4F4F4; border-radius: 4px; height: 14px; width: 60px;"></div>
+                  </div>
+                </div>
+                <div style="padding: 19% 0;"></div>
+                <p style="color:#1E2229; font-size:14px; line-height:17px; text-align:center;">Ver essa publicação no Instagram</p>
+              </a>
+            </div>
+          </blockquote>
+        </div>
+
+        <!-- Post 3 -->
+        <div class="snap-center shrink-0 w-[330px] bg-white rounded-2xl border border-brand-border p-3 shadow-soft flex flex-col justify-between">
+          <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/DYKR4NRjnXX/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; margin: 1px; width:100%;">
+            <div style="padding:16px;">
+              <a href="https://www.instagram.com/p/DYKR4NRjnXX/?utm_source=ig_embed&amp;utm_campaign=loading" target="_blank" style="text-decoration:none; color:#1E2229;">
+                <div style="display: flex; flex-direction: row; align-items: center;">
+                  <div style="background-color: #F4F4F4; border-radius: 50%; height: 40px; width: 40px; margin-right: 14px;"></div>
+                  <div style="display: flex; flex-direction: column; flex-grow: 1;">
+                    <div style="background-color: #F4F4F4; border-radius: 4px; height: 14px; margin-bottom: 6px; width: 100px;"></div>
+                    <div style="background-color: #F4F4F4; border-radius: 4px; height: 14px; width: 60px;"></div>
+                  </div>
+                </div>
+                <div style="padding: 19% 0;"></div>
+                <p style="color:#1E2229; font-size:14px; line-height:17px; text-align:center;">Ver essa publicação no Instagram</p>
+              </a>
+            </div>
+          </blockquote>
+        </div>
+
+      </div>
+
+      <!-- Guia de usabilidade apenas para celulares -->
+      <p class="text-center text-[10px] uppercase tracking-widest text-brand-charcoal/40 font-semibold lg:hidden">
+        👈 Deslize para o lado para ver todos os posts 👉
+      </p>
+
+    </div>
+  </section>
+
+  <!-- RODAPÉ ENXUTO COM LOCALIZAÇÃO DE MANAUS -->
+  <footer class="bg-brand-charcoal text-brand-cream py-16 px-6">
+    <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between gap-12 items-start">
+      <div class="space-y-4">
+        <div class="flex items-center space-x-2">
+          <div class="w-8 h-8 border border-brand-cream/30 rounded-full flex items-center justify-center font-serif text-xs font-semibold">
+            M
+          </div>
+          <span class="font-serif tracking-widest uppercase text-sm font-bold">Studio Mobilizare</span>
+        </div>
+        <p class="text-xs text-brand-cream/50 max-w-xs leading-relaxed">
+          Atendimentos integrados de Pilates e Quiropraxia clínica focados em devolver sua saúde e qualidade de movimento.
+        </p>
+      </div>
+
+      <div class="text-xs space-y-2 text-brand-cream/70">
+        <p class="font-bold text-brand-cream uppercase tracking-wider text-[10px]">Onde nos encontrar</p>
+        <p>Bairro Cidade Nova - Manaus, AM</p>
+        <p>Atendimento exclusivo sob agendamento prévio via WhatsApp.</p>
+      </div>
+    </div>
+    
+    <div class="max-w-5xl mx-auto border-t border-brand-cream/10 mt-12 pt-6 flex flex-col sm:flex-row justify-between text-[10px] text-brand-cream/40 uppercase tracking-wider">
+      <p>© 2026 Studio Mobilizare. Todos os direitos reservados.</p>
+      <p>Desenvolvido por Lucas</p>
+    </div>
+  </footer>
+
+  <!-- BOTÃO WHATSAPP DISCRETO (Sóbrio, Charcoal & Gold, sem o verde berrante e deslocado da interface nativa) -->
+  <!-- A classe 'bottom-28' garante que em celulares ele desvie completamente dos controles de IA e botões flutuantes -->
+  <a id="btn-floating-wa" href="https://wa.me/5592984572635?text=Olá! Gostaria de agendar uma consulta de avaliação no Studio Mobilizare." 
+     target="_blank"
+     class="fixed bottom-28 right-6 z-50 bg-brand-charcoal text-brand-gold hover:bg-brand-gold hover:text-brand-charcoal border border-brand-gold/40 p-4 rounded-full shadow-2xl transition-all hover:scale-110 flex items-center justify-center md:bottom-8 md:right-8">
+    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.965C16.528 1.978 14.074.956 11.48.956c-5.437 0-9.864 4.373-9.868 9.803-.001 1.738.468 3.43 1.36 4.947L1.87 20.76l5.01-1.307c1.3.1 2.2.3 3.5.3z"></path>
+    </svg>
+  </a>
+
+  <!-- ================================================================= -->
+  <!-- DEMONSTRAÇÃO DO PAINEL ADMINISTRATIVO (Para encantar a cliente) -->
+  <!-- ================================================================= -->
+  <div id="admin-panel" class="fixed bottom-4 left-4 z-50 bg-brand-charcoal text-white rounded-3xl p-5 shadow-2xl border border-brand-gold/30 max-w-xs transition-all duration-300">
+    <div class="flex items-center justify-between border-b border-white/10 pb-2 mb-3">
+      <span class="text-xs font-bold uppercase tracking-widest text-brand-gold flex items-center space-x-1">
+        ⚙️ Admin Simulador
+      </span>
+      <button onclick="toggleAdminPanel()" class="text-xs hover:text-brand-gold p-1">✖️</button>
+    </div>
+    
+    <p class="text-[10px] text-white/50 mb-4 leading-relaxed">
+      (Esta caixa simula a tela do link secreto do administrador. Podes testar as funções dinâmicas em tempo real!)
+    </p>
+
+    <div class="space-y-4">
+      <!-- Sincronização do Instagram -->
+      <div class="flex items-center justify-between">
+        <label class="text-[11px] font-medium text-white/80">Exibir Instagram no site?</label>
+        <button onclick="toggleInstagramSection()" id="btn-toggle-ig" class="w-10 h-6 bg-brand-gold rounded-full p-1 transition-colors relative flex items-center">
+          <div id="dot-ig" class="w-4 h-4 bg-brand-charcoal rounded-full transform translate-x-4 transition-transform"></div>
+        </button>
+      </div>
+
+      <!-- Configuração de Celular do WhatsApp -->
+      <div class="space-y-1">
+        <label class="text-[9px] uppercase tracking-wider font-bold text-white/55">WhatsApp do Studio (DDD+Número)</label>
+        <div class="flex space-x-1">
+          <input type="text" id="input-phone" value="5592984572635" class="bg-white/10 border border-white/20 text-xs rounded px-2 py-1.5 w-full text-white font-mono">
+          <button onclick="atualizarCelular()" class="bg-brand-gold text-brand-charcoal font-bold text-[10px] px-3 rounded hover:bg-brand-gold/80 transition-colors">Salvar</button>
+        </div>
+        <p id="msg-sucesso-phone" class="text-[9px] text-emerald-400 hidden">Número atualizado com sucesso!</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Botão para reabrir o painel administrativo caso fechado -->
+  <button id="btn-admin-floating" onclick="toggleAdminPanel()" class="fixed bottom-4 left-4 z-40 bg-brand-charcoal text-brand-gold hover:bg-brand-charcoal/90 p-3 rounded-full shadow-lg border border-brand-gold/20 flex items-center justify-center text-xs space-x-1 hidden">
+    <span>⚙️ Admin</span>
+  </button>
+
+  <!-- SCRIPT OFICIAL DO INSTAGRAM PARA EMBED (Renderiza os blockquotes perfeitamente) -->
+  <script async src="https://www.instagram.com/embed.js"></script>
+
+  <!-- LÓGICAS INTERATIVAS DO PROTÓTIPO -->
+  <script>
+    // 1. Controle da Triagem de Sintomas/Objetivos direcionada para o WhatsApp
+    function selecionarObjetivo(objetivo, idCard, servico, textoBase) {
+      // Limpar seleção anterior
+      const cards = ['postura', 'dores', 'estresse', 'flexibilidade'];
+      cards.forEach(c => {
+        const el = document.getElementById(`card-${c}`);
+        el.classList.remove('border-brand-gold', 'ring-2', 'ring-brand-gold/30', 'bg-brand-linen');
+      });
+
+      // Ativar o card clicado
+      const cardAtivo = document.getElementById(`card-${idCard}`);
+      cardAtivo.classList.add('border-brand-gold', 'ring-2', 'ring-brand-gold/30', 'bg-brand-linen');
+
+      // Atualizar o bloco explicativo
+      document.getElementById('objetivo-nome').innerText = objetivo;
+      document.getElementById('servico-indicado').innerText = servico;
+      
+      const blocoResultado = document.getElementById('resultado-triagem');
+      blocoResultado.classList.remove('hidden');
+
+      // Forçar efeito suave de entrada
+      blocoResultado.classList.remove('fade-enter');
+      void blocoResultado.offsetWidth; // Força re-render
+      blocoResultado.classList.add('fade-enter', 'fade-enter-active');
+
+      const celularConfigurado = document.getElementById('input-phone').value;
+      const texto = `Olá! Realizei o autodiagnóstico no site do Studio Mobilizare. ${textoBase}.`;
+      const url = `https://wa.me/${celularConfigurado}?text=${encodeURIComponent(texto)}`;
+      
+      document.getElementById('btn-whats-triado').setAttribute('href', url);
+    }
+
+    // 2. Painel Admin: Lógica de ocultar/mostrar seção do Instagram
+    let instagramVisivel = true;
+    function toggleInstagramSection() {
+      instagramVisivel = !instagramVisivel;
+      const section = document.getElementById('instagram-section');
+      const dot = document.getElementById('dot-ig');
+      const btn = document.getElementById('btn-toggle-ig');
+      const navLink = document.getElementById('nav-ig-link');
+
+      if (instagramVisivel) {
+        section.classList.remove('hidden');
+        navLink.classList.remove('hidden');
+        dot.classList.remove('translate-x-0');
+        dot.幕; // Evitar quebras de layout
+        dot.classList.add('translate-x-4');
+        btn.classList.remove('bg-white/20');
+        btn.classList.add('bg-brand-gold');
+      } else {
+        section.classList.add('hidden');
+        navLink.classList.add('hidden');
+        dot.classList.remove('translate-x-4');
+        dot.classList.add('translate-x-0');
+        btn.classList.remove('bg-brand-gold');
+        btn.classList.add('bg-white/20');
+      }
+    }
+
+    // 3. Atualizar telefone global dinamicamente em todos os botões do site
+    function atualizarCelular() {
+      const novoNum = document.getElementById('input-phone').value;
+      
+      // Lista de botões que levam ao WhatsApp
+      const linkPilates = document.getElementById('btn-hero-pilates');
+      const linkQuiro = document.getElementById('btn-hero-quiro');
+      const linkFloat = document.getElementById('btn-floating-wa');
+
+      const msgPilates = encodeURIComponent('Olá! Gostaria de agendar uma aula experimental de Pilates no Studio Mobilizare.');
+      const msgQuiro = encodeURIComponent('Olá Dra. Luciana! Gostaria de agendar uma consulta de avaliação clínica / Quiropraxia no Studio Mobilizare.');
+      const msgDefault = encodeURIComponent('Olá! Gostaria de agendar uma consulta de avaliação no Studio Mobilizare.');
+
+      if (linkPilates) linkPilates.setAttribute('href', `https://wa.me/${novoNum}?text=${msgPilates}`);
+      if (linkQuiro) linkQuiro.setAttribute('href', `https://wa.me/${novoNum}?text=${msgQuiro}`);
+      if (linkFloat) linkFloat.setAttribute('href', `https://wa.me/${novoNum}?text=${msgDefault}`);
+
+      // Atualiza também o botão de triagem se já estiver ativo
+      const objetivoNome = document.getElementById('objetivo-nome').innerText;
+      const linkTriagem = document.getElementById('btn-whats-triado');
+      if (linkTriagem && objetivoNome) {
+        const textoCustom = `Olá! Gostaria de agendar uma consulta/aula no Studio Mobilizare focado no meu objetivo de: *${objetivoNome}*.`;
+        linkTriagem.setAttribute('href', `https://wa.me/${novoNum}?text=${encodeURIComponent(textoCustom)}`);
+      }
+
+      // Mostrar mensagem de sucesso temporária
+      const feedback = document.getElementById('msg-sucesso-phone');
+      feedback.classList.remove('hidden');
+      setTimeout(() => {
+        feedback.classList.add('hidden');
+      }, 3000);
+    }
+
+    // 4. Fechar / Minimizar o painel administrativo simulado
+    function toggleAdminPanel() {
+      const panel = document.getElementById('admin-panel');
+      const btnFloating = document.getElementById('btn-admin-floating');
+
+      if (panel.classList.contains('translate-y-[200%]')) {
+        panel.classList.remove('translate-y-[200%]');
+        btnFloating.classList.add('hidden');
+      } else {
+        panel.classList.add('translate-y-[200%]');
+        btnFloating.classList.remove('hidden');
+      }
+    }
+
+    // Rodar configuração inicial ao carregar a página
+    window.onload = function() {
+      atualizarCelular();
+      // Garantir re-renderização dos widgets do Instagram caso necessário
+      if(window.instgrm) {
+        window.instgrm.Embeds.process();
+      }
+    }
+  </script>
+</body>
+</html>fs
