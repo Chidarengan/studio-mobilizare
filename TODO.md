@@ -6,3 +6,13 @@ modo escuro
 farei um insta temporario so com Iframe. talvez se torne o projeto todo. (nao recomendado pq fica pesado)
 
 read me
+
+testa no celular (tem uns touch screens e swipe do instagram q nao tao pegando)
+
+6. Melhorias no Painel Admin e SEO
+
+Onde está nos testes: teste1.html e teste2current.html.
+
+O que é:
+
+SEO: O título title="studio-mobilizare" é genérico. Os testes usam títulos como "Dra. Luciana | Quiropraxia & Fisioterapia Integrativa". Mude o index.html e adicione uma meta description.
