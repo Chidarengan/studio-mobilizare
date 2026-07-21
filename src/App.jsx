@@ -15,6 +15,10 @@ export default function App() {
   const [isAdminOpen, setIsAdminOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
+  // ESTADOS DO BANNER PROMOCIONAL
+  const [showBanner, setShowBanner] = useState(false);
+  const [bannerText, setBannerText] = useState('Atenção: Vagas limitadas para turmas de Pilates neste mês em Cidade Nova!');
+
   useEffect(() => {
     if (isDarkMode) {
       document.documentElement.classList.add('dark');
@@ -27,6 +31,14 @@ export default function App() {
 
   return (
     <div className="bg-[#FAF8F5] dark:bg-[#0C0A06] text-[#1E2229] dark:text-[#F3ECE3] min-h-screen flex flex-col justify-between antialiased selection:bg-[#C5A880] selection:text-[#0C0A06] transition-colors duration-300 font-sans">
+      
+      {/* ⚡ BANNER DE AVISO / PROMOÇÃO NO TOPO ⚡ */}
+      {showBanner && (
+        <div className="bg-[#D4A647] text-[#0C0A06] text-[10px] sm:text-[11px] font-bold py-2 px-4 text-center tracking-wider uppercase transition-all">
+          {bannerText}
+        </div>
+      )}
+
       <Navbar 
         whatsappNumber={whatsappNumber} 
         onOpenAdmin={() => setIsAdminOpen(true)}
@@ -42,12 +54,17 @@ export default function App() {
       {showInstagram && <InstagramFeed />}
       <Footer />
       
+      {/* MODAL ADMIN */}
       {isAdminOpen && (
         <AdminPanel 
           whatsappNumber={whatsappNumber} 
           setWhatsappNumber={setWhatsappNumber}
           showInstagram={showInstagram}
           setShowInstagram={setShowInstagram}
+          showBanner={showBanner}
+          setShowBanner={setShowBanner}
+          bannerText={bannerText}
+          setBannerText={setBannerText}
           onClose={() => setIsAdminOpen(false)}
         />
       )}

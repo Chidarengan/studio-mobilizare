@@ -23,3 +23,5 @@ tem como eu mandar pra dra ver de algum jeito? acho q so upando no github
 algo mais no devmode? 
 
 os cliques em cima da logo nao ta bom o suficiente por causa do botaozinho que indica clique 
+
+fazer uma versao clean pra caso eu precise fazer isso no futuro ja ter feito
