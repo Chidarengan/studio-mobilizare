@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { Triagem } from './components/Triagem';
@@ -10,45 +10,47 @@ import { Footer } from './components/Footer';
 import { AdminPanel } from './components/AdminPanel';
 
 export default function App() {
-  // Gerenciamento de estado global (Telefone e visibilidade do Instagram)
   const [whatsappNumber, setWhatsappNumber] = useState('5592984572635');
   const [showInstagram, setShowInstagram] = useState(true);
+  const [isAdminOpen, setIsAdminOpen] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [isDarkMode]);
+
+  const toggleDarkMode = () => setIsDarkMode(!isDarkMode);
 
   return (
-    <div className="bg-[#FAF8F5] text-[#1E2229] min-h-screen flex flex-col justify-between antialiased selection:bg-[#C5A880] selection:text-[#1E2229]">
-      
-      {/* 1. Cabeçalho */}
-      <Navbar whatsappNumber={whatsappNumber} />
-
-      {/* 2. Destaque Inicial */}
-      <Hero whatsappNumber={whatsappNumber} />
-
-      {/* 3. Quiz de Triagem */}
-      <Triagem whatsappNumber={whatsappNumber} />
-
-      {/* 4. Apresentação da Dra. Luciana */}
-      <Sobre />
-
-      {/* 5. Serviços */}
-      <Metodos />
-
-      {/* 6. Prova Social */}
-      <Depoimentos />
-
-      {/* 7. Feed do Instagram (Exibição Condicional) */}
-      {showInstagram && <InstagramFeed />}
-
-      {/* 8. Rodapé */}
-      <Footer />
-
-      {/* 9. Painel Administrativo de Teste */}
-      <AdminPanel 
+    <div className="bg-[#FAF8F5] dark:bg-[#0C0A06] text-[#1E2229] dark:text-[#F3ECE3] min-h-screen flex flex-col justify-between antialiased selection:bg-[#C5A880] selection:text-[#0C0A06] transition-colors duration-300 font-sans">
+      <Navbar 
         whatsappNumber={whatsappNumber} 
-        setWhatsappNumber={setWhatsappNumber}
-        showInstagram={showInstagram}
-        setShowInstagram={setShowInstagram}
+        onOpenAdmin={() => setIsAdminOpen(true)}
+        isDarkMode={isDarkMode}
+        toggleDarkMode={toggleDarkMode}
       />
       
+      <Hero whatsappNumber={whatsappNumber} />
+      <Triagem whatsappNumber={whatsappNumber} />
+      <Sobre />
+      <Metodos />
+      <Depoimentos />
+      {showInstagram && <InstagramFeed />}
+      <Footer />
+      
+      {isAdminOpen && (
+        <AdminPanel 
+          whatsappNumber={whatsappNumber} 
+          setWhatsappNumber={setWhatsappNumber}
+          showInstagram={showInstagram}
+          setShowInstagram={setShowInstagram}
+          onClose={() => setIsAdminOpen(false)}
+        />
+      )}
     </div>
   );
 }

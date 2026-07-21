@@ -19,3 +19,7 @@ SEO: O título title="studio-mobilizare" é genérico. Os testes usam títulos c
 
 
 tem como eu mandar pra dra ver de algum jeito? acho q so upando no github
+
+algo mais no devmode? 
+
+os cliques em cima da logo nao ta bom o suficiente por causa do botaozinho que indica clique 

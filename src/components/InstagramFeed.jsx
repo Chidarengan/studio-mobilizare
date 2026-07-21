@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 export function InstagramFeed() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -25,19 +25,19 @@ export function InstagramFeed() {
   }, [currentSlide]);
 
   return (
-    <section id="instagram-section" className="bg-[#FAF8F5] py-20 px-6 border-t border-[#EAE5DF] flex flex-col items-center">
+    <section id="instagram-section" className="bg-[#FAF8F5] dark:bg-[#0C0A06] py-20 px-6 border-t border-[#EAE5DF] dark:border-[#3D3429] flex flex-col items-center transition-colors duration-300">
       <div className="w-full max-w-4xl space-y-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div className="space-y-1">
-            <span className="text-[9px] uppercase tracking-widest font-bold text-[#C5A880]">Acompanhe nosso estúdio</span>
-            <h2 className="font-serif text-3xl text-[#1E2229]">Instagram do Studio</h2>
-            <p className="text-xs text-[#1E2229]/50">Acesse publicações reais direto do nosso perfil oficial no Instagram.</p>
+            <span className="text-[9px] uppercase tracking-widest font-bold text-[#C5A880] dark:text-[#E5CEA9]">Acompanhe nosso estúdio</span>
+            <h2 className="font-serif text-3xl text-[#1E2229] dark:text-[#F3ECE3]">Instagram do Studio</h2>
+            <p className="text-xs text-[#1E2229]/50 dark:text-[#A69A8A]">Acesse publicações reais direto do nosso perfil oficial no Instagram.</p>
           </div>
           <a 
             href="https://www.instagram.com/studiomobilizare/" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="text-xs font-bold text-[#C5A880] uppercase tracking-wider hover:underline flex items-center space-x-1"
+            className="text-xs font-bold text-[#C5A880] dark:text-[#E5CEA9] uppercase tracking-wider hover:underline flex items-center space-x-1"
           >
             <span>@studiomobilizare</span>
             <span>→</span>
@@ -47,19 +47,19 @@ export function InstagramFeed() {
         <div className="relative w-full max-w-[340px] sm:max-w-[420px] mx-auto group">
           <button 
             onClick={() => setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides)}
-            className="absolute -left-4 sm:-left-16 top-[45%] -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-[#1E2229] text-[#C5A880] border border-[#C5A880]/20 flex items-center justify-center shadow-md hover:bg-[#C5A880] hover:text-[#1E2229] transition-all"
+            className="absolute -left-4 sm:-left-16 top-[45%] -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-[#1E2229] dark:bg-[#2A231C] text-[#C5A880] dark:text-[#D4A647] border border-[#C5A880]/20 dark:border-[#3D3429] flex items-center justify-center shadow-md hover:bg-[#C5A880] dark:hover:bg-[#D4A647] hover:text-[#1E2229] dark:hover:text-[#0C0A06] transition-all"
           >
             ‹
           </button>
 
           <button 
             onClick={() => setCurrentSlide((prev) => (prev + 1) % totalSlides)}
-            className="absolute -right-4 sm:-right-16 top-[45%] -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-[#1E2229] text-[#C5A880] border border-[#C5A880]/20 flex items-center justify-center shadow-md hover:bg-[#C5A880] hover:text-[#1E2229] transition-all"
+            className="absolute -right-4 sm:-right-16 top-[45%] -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-[#1E2229] dark:bg-[#2A231C] text-[#C5A880] dark:text-[#D4A647] border border-[#C5A880]/20 dark:border-[#3D3429] flex items-center justify-center shadow-md hover:bg-[#C5A880] dark:hover:bg-[#D4A647] hover:text-[#1E2229] dark:hover:text-[#0C0A06] transition-all"
           >
             ›
           </button>
 
-          <div className="w-full overflow-hidden rounded-[2rem] border border-[#EAE5DF] p-4 bg-[#F3EFE9] shadow-soft">
+          <div className="w-full overflow-hidden rounded-[2rem] border border-[#EAE5DF] dark:border-[#3D3429] p-4 bg-[#F3EFE9] dark:bg-[#181511]">
             <div 
               className="flex transition-transform duration-500 ease-in-out"
               style={{ transform: `translateX(-${currentSlide * 100}%)` }}
@@ -88,7 +88,7 @@ export function InstagramFeed() {
                 key={idx}
                 onClick={() => setCurrentSlide(idx)}
                 className={`h-2 rounded-full transition-all duration-300 ${
-                  idx === currentSlide ? 'bg-[#C5A880] w-4' : 'bg-[#1E2229]/20 w-2'
+                  idx === currentSlide ? 'bg-[#C5A880] dark:bg-[#D4A647] w-4' : 'bg-[#1E2229]/20 dark:bg-[#3D3429] w-2'
                 }`}
               />
             ))}
