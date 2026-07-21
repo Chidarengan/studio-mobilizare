@@ -16,3 +16,6 @@ Onde está nos testes: teste1.html e teste2current.html.
 O que é:
 
 SEO: O título title="studio-mobilizare" é genérico. Os testes usam títulos como "Dra. Luciana | Quiropraxia & Fisioterapia Integrativa". Mude o index.html e adicione uma meta description.
+
+
+tem como eu mandar pra dra ver de algum jeito? acho q so upando no github
