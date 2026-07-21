@@ -25,3 +25,5 @@ algo mais no devmode?
 os cliques em cima da logo nao ta bom o suficiente por causa do botaozinho que indica clique 
 
 fazer uma versao clean pra caso eu precise fazer isso no futuro ja ter feito
+
+Configurar um open graph (aquela fotinha do zap quando manda link)
